@@ -1,3 +1,24 @@
 <p id="notice"><%= notice %></p>
+<% content_for :nav_links do %>
+<div class="btn-group pull-right">
+	<a class="btn dropdown-toggle" href="#" data-toggle="dropdown">
+		<i class="icon-user"></i>
+		<%= @account.name %>
+		<span class="caret"></span>
+	</a>
+	<ul class="dropdown-menu">
+		<li>
+			<a href="#">Sign Out</a>
+		</li>
+	</ul>
+</div>
+<div class="nav-collapse">
+  <ul class="nav pull-right">
+    <li><a href="#about">About</a></li>
+    <li><a href="#help">Help</a></li>
+  </ul>
+</div>
+
+<% end %>
 
 

@@ -1,6 +1,6 @@
 MlmBackEnd::Application.routes.draw do
 	resources :users, :path => '/admin/users'
-	resources :accounts, only: [:show, :index]
+	resources :accounts, only: [:show]
   resources :identities, only: [:new]
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -63,5 +63,7 @@ MlmBackEnd::Application.routes.draw do
   match "/logout", to: "sessions#destroy", :as => "logout"
   match "/login", to: "sessions#new", :as => "login"
   match "/register", to: "identities#new", :as => "register"
+
+	match "/my_account", to: 'accounts#show', :as => 'my_account'
 
 end
