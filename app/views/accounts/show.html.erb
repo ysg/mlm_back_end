@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+
 <% content_for :nav_links do %>
 <div class="btn-group pull-right">
 	<a class="btn dropdown-toggle" href="#" data-toggle="dropdown">
@@ -18,7 +19,79 @@
     <li><a href="#help">Help</a></li>
   </ul>
 </div>
-
 <% end %>
+
+<div class="row">
+	<div class="span3">
+		<div class="well sidebar-nav account-info">
+			<h2><%= @account.name %></h2>
+			<h3>Id</h3>
+			<h4><%= @account.id %></h4>
+			<h3>Membership type</h3>
+			<h4><%= package_badge_helper %></h4>
+		</div>
+	</div>
+	<div class="span9">
+    <ul class="nav nav-tabs">
+		  <li class="active"><a href="#overview" data-toggle="pill">Overview</a></li>
+		  <li><a href="#commission" data-toggle="pill">Commission Pricing</a></li>
+    </ul>
+		<div id="overview" class="tab-pane active fade in">
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span6">
+						<h3>Generation 1</h3>
+						<table class="table network">
+							<tr>
+								<th>ID</th>
+								<th>Earnings</th>
+							</tr>
+							<% @account.first_generation.each do |item| -%>
+								<tr>
+									<td><%= item.id %> </td>
+									<td>$<%= @account.earnings_from_user item%>.00</td>
+								</tr>	
+							<% end -%>
+						</table>
+					</div>
+					<div class="span6">
+						<h3>Generation 2</h3>
+						<table class="table network">
+							<tr>
+								<th>ID</th>
+								<th>Earnings</th>
+							</tr>
+							<% @account.second_generation.each do |item| -%>
+								<tr>
+									<td><%= item.id %> </td>
+									<td>$<%= @account.earnings_from_user item%>.00</td>
+								</tr>	
+							<% end -%>
+						</table>
+
+					</div>				
+				</div>				
+			</div>
+
+		</div>
+		<div id="commission" class="tab-pane fade">
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span6">
+						<h3>Generation 1</h3>
+					</div>
+					<div class="span6">
+						<h3>Generation 2</h3>
+					</div>				
+				</div>				
+			</div>
+
+		</div>
+	</div>
+</div>
+			<p>
+		</div>
+	</div>
+</div>
 
 
