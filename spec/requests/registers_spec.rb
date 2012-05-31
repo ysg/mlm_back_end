@@ -5,6 +5,7 @@ describe "User Registration" do
     before do
       User.destroy_all
       Identity.destroy_all
+      FactoryGirl.create(:user)
     end
 
     it "should create a new identity and user", :js => true do
@@ -22,12 +23,11 @@ describe "User Registration" do
       fill_in 'ein', :with => 'ein'
       fill_in 'home_phone', :with => '1111111'
       fill_in 'cell', :with => '1234567890'
-      fill_in 'package', :with => 'package-1'
-      fill_in 'referred_by', :with => 'test user'
+      select 'free', :from => 'package'
       fill_in 'referer_id', :with => '1'
       click_button "Register"
       Identity.count.should eq(1)
-      User.count.should eq(1)
+      User.count.should eq(2)
       page.should have_content('Signed in!')
     end
   end

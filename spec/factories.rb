@@ -5,7 +5,6 @@ FactoryGirl.define do
     password 'jjjjjj'
     password_confirmation { |u| u.password }
     package "package-1"
-    referred_by "user-1"
     referer_id "1"
     home_phone "123456"
     cell "0123456789"

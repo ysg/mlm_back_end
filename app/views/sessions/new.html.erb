@@ -1,7 +1,10 @@
 <% content_for :nav_links do %>
     <div class="nav-collapse">
       <ul class="nav pull-right">
-        <li><a href="/">Home</a></li>
+				<% if current_user %>
+        	<li><a href="/">Welcome <%= current_user.name %></a></li>
+        <% end %>
+				<li><a href="/">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#help">Help</a></li>
 				<li><%= link_to 'Admin', users_path %></li>

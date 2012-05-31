@@ -7,7 +7,7 @@ class Identity < OmniAuth::Identity::Models::ActiveRecord
  validates :name, presence: true
  validates :email, presence: true, uniqueness: true, format: /^[^@\s]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
  validates :package, presence: true
- validates :referred_by, presence: true
+ #validates :referred_by, presence: true
  validates :referer_id, presence: true
  validates :home_phone, numericality: true, allow_blank: true
  validates :cell, numericality: true, allow_blank: true
