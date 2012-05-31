@@ -21,72 +21,69 @@
  </div>
 <% end %>
 <div class="field">
- <%= label_tag :name %><br>
+ <%= label_tag :name, "Name *" %>
  <%= text_field_tag :name, @identity.try(:name) %>
 </div>
 <div class="field">
- <%= label_tag :email %><br>
+ <%= label_tag :email, "Email *" %>
  <%= text_field_tag :email, @identity.try(:email) %>
 </div>
 <div class="field">
- <%= label_tag :password %><br>
+ <%= label_tag :password, "Password *" %>
  <%= password_field_tag :password %>
 </div>
 <div class="field">
- <%= label_tag :password_confirmation %><br>
+ <%= label_tag :password_confirmation, "Confirm Password *" %>
  <%= password_field_tag :password_confirmation %>
 </div>
 <div class="field">
- <%= label_tag :company %><br>
- <%= text_field_tag :company %>
+ <%= label_tag :company %>
+ <%= text_field_tag :company, @user.try(:company) %>
 </div>
 <div class="field">
-	<%= label_tag :spouse_name %><br>
-	<%= text_field_tag :spouse_name %>
+	<%= label_tag :spouse_name %>
+	<%= text_field_tag :spouse_name, @user.try(:spouse_name) %>
 </div>
 <div class="field">
- <%= label_tag :street_address %><br>
- <%= text_field_tag :street_address %>
+ <%= label_tag :street_address %>
+ <%= text_field_tag :street_address, @user.try(:street_address) %>
 </div>
 <div class="field">
-	<%= label_tag :city %><br>
-	<%= text_field_tag :city %>
+	<%= label_tag :city %>
+	<%= text_field_tag :city, @user.try(:city) %>
 </div>
 <div class="field">
-	<%= label_tag :state %><br>
-	<%= text_field_tag :state %>
+	<%= label_tag :state %>
+	<%= text_field_tag :state, @user.try(:state) %>
 </div>
 <div class="field">
-	<%= label_tag :zip %><br>
-	<%= text_field_tag :zip %>
-</div>
-</div>
-<div class="field">
-	<%= label_tag :ein %><br>
-	<%= text_field_tag :ein %>
+	<%= label_tag :zip %>
+	<%= text_field_tag :zip, @user.try(:zip) %>
 </div>
 <div class="field">
-	<%= label_tag :home_phone %><br>
-	<%= text_field_tag :home_phone %>
+	<%= label_tag :ein %>
+	<%= text_field_tag :ein, @user.try(:ein) %>
 </div>
 <div class="field">
-	<%= label_tag :cell %><br>
-	<%= text_field_tag :cell %>
-</div>
+	<%= label_tag :home_phone %>
+	<%= text_field_tag :home_phone, @identity.try(:home_phone) %>
 </div>
 <div class="field">
-	<%= label_tag :package %><br>
-	<%= text_field_tag :package %>
+	<%= label_tag :cell %>
+	<%= text_field_tag :cell, @identity.try(:cell) %>
+</div>
+<div class="field">
+	<%= label_tag :package, "Package *" %>
+	<%= select_tag :package, options_for_select(User::PACKAGE_IDS.inject({}){|memo,(k,v)| memo[k.to_s] = v; memo},@identity.try(:package)) %>
 </div>
 
 <div class="field">
-	<%= label_tag :referred_by %><br>
-	<%= text_field_tag :referred_by %>
-</div>
+	<%= label_tag :referred_by, "Rererred By *" %>
+	<%= text_field_tag :referred_by, @identity.try(:referred_by), :disabled => true %>
 </div>
 <div class="field">
-	<%= label_tag :referer_id %><br>
-	<%= text_field_tag :referer_id %>
+	<%= label_tag :referer_id, "Referer ID *" %>
+	<%= text_field_tag :referer_id, @identity.try(:referer_id) %>
 </div>
 <div class="actions"><%= submit_tag "Register" %></div>
 <% end %>

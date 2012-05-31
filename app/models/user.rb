@@ -10,7 +10,7 @@ attr_accessible :cell, :city, :company, :ein, :home_phone, :spouse_name, :state,
   end
 
   def self.create_with_omniauth(auth,params)
-   create! do |user|
+   User.find_by_referer_id(params["referer_id"]).children.create! do |user|
      accessible_attributes = User.accessible_attributes.to_a
      accessible_attributes.shift()
      accessible_attributes.each do |attr|
@@ -22,8 +22,8 @@ attr_accessible :cell, :city, :company, :ein, :home_phone, :spouse_name, :state,
      user.name = auth["info"]["name"]
      user.email = auth["info"]["email"]
      user.package = params["package"] if params["package"].present?
-     user.referred_by = params["referred_by"] if params["referred_by"].present?
-     user.referer_id = params["referer_id"] if params["referer_id"].present?
+     #user.referred_by = params["referred_by"] if params["referred_by"].present?
+     user.referer_id = User.generate_referer_id
    end
   end
 
@@ -68,6 +68,10 @@ attr_accessible :cell, :city, :company, :ein, :home_phone, :spouse_name, :state,
 	def distance_from_user(user)
 		return 0 unless self.descendants.include? user
 		return user.depth - self.depth
-	end
+  end
+
+  def self.generate_referer_id
+    Time.now.to_i.to_s[-6,6]
+  end
 
 end
