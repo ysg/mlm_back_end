@@ -1,3 +1,13 @@
+<script>
+    $(document).ready(function() {
+          $(".network-modal-link").bind("ajax:success",
+                   function(evt, data, status, xhr){
+                        //this assumes the action returns an HTML snippet
+                        $("#network-modal").html(data);
+           }
+    });
+</script>
+
 <p id="notice"><%= notice %></p>
 
 <% content_for :nav_links do %>
@@ -26,7 +36,7 @@
 		<div class="well sidebar-nav account-info">
 			<h2><%= @account.name %></h2>
 			<h3>Id</h3>
-			<h4><%= @account.id %></h4>
+			<h4><a data-toggle="modal" href="#myModal" ><%= @account.id %></a></h4>
 			<h3>Membership type</h3>
 			<h4><%= package_badge_helper %></h4>
 		</div>
@@ -48,7 +58,9 @@
 							</tr>
 							<% @account.first_generation.each do |item| -%>
 								<tr>
-									<td><%= item.id %> </td>
+									<td>
+<%= link_to item.id, user_modal_path(:user_id => item.id), {:remote => true, 'data-toggle' => 'modal', 'data-target' => "#network-modal", :class => 'network-modal-link'} %>
+									</td>
 									<td>$<%= @account.earnings_from_user item%>.00</td>
 								</tr>	
 							<% end -%>
@@ -89,6 +101,25 @@
 		</div>
 	</div>
 </div>
+<div class="modal fade" id="myModal">
+	<div class="modal-header">
+		<button class="close" data-dismiss="modal">×</button>
+		<h3><%= @account.name %></h3>
+	</div>
+	<div class="modal-body">
+		<dl class="dl-horizontal">
+			<dt>ID:</dt>
+			<dd><%= @account.id %>  </dd>
+			<dt>Referred by: </dt>
+			<dd><%= @account.parent.name %>	(ID: <%= @account.parent.id %>) </dd>
+		</dl>
+
+	</div>
+</div>
+
+<div class="modal fade" id="network-modal"></div>
+
+
 			<p>
 		</div>
 	</div>

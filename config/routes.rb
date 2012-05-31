@@ -65,5 +65,6 @@ MlmBackEnd::Application.routes.draw do
   match "/register", to: "identities#new", :as => "register"
 
 	match "/my_account", to: 'accounts#show', :as => 'my_account'
+	match "/user_modal/:user_id", to: 'accounts#user_modal', :as => 'user_modal'
 
 end
