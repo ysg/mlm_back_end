@@ -6,7 +6,7 @@ has_many :payment_notifications
 
 has_ancestry :cache_depth => true
 
-attr_accessible :cell, :city, :company, :ein, :home_phone, :spouse_name, :state, :street_address, :zip
+attr_accessible :cell, :city, :company, :ein, :home_phone, :spouse_name, :state, :street_address, :zip, :referer_id
 
   def self.from_omniauth(auth,params)
    find_by_provider_and_uid(auth["provider"], auth["uid"]) || create_with_omniauth(auth,params)

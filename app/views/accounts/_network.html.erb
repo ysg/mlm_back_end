@@ -1,0 +1,43 @@
+				<div class="container-fluid">
+					<div class="row-fluid">
+						<div class="span6">
+							<h3>Generation 1</h3>
+							<table class="table network">
+								<tr>
+									<th>ID</th>
+									<th>Earnings</th>
+								</tr>
+								<% @account.first_generation.each do |item| -%>
+									<tr>
+										<td>
+											<%= link_to item.referer_id, user_modal_path(:user_id => item.referer_id), {:remote => true, :class => 'network-modal-link'} %>
+										</td>
+										<td>$<%= @account.earnings_from_user item%>.00</td>
+									</tr>	
+								<% end -%>
+							</table>
+						</div>
+						<div class="span6">
+							<% if not @account.second_generation.empty?  %>
+							<h3>Generation 2</h3>
+							<table class="table network">
+								<tr>
+									<th>ID</th>
+									<th>Earnings</th>
+								</tr>
+								<% @account.second_generation.each do |item| -%>
+									<tr>
+										<td>
+											<%= link_to item.referer_id, user_modal_path(:user_id => item.referer_id), {:remote => true, :class => 'network-modal-link'} %>
+										</td>
+										<td>$<%= @account.earnings_from_user item%>.00</td>
+									</tr>	
+								<% end -%>
+							</table>
+							<% end %>
+
+						</div>				
+					</div>				
+				</div>
+
+<div class="modal fade" id="network-modal"></div>

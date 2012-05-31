@@ -23,73 +23,32 @@
 </div>
 <% end %>
 
-<div class="row">
+<div class="row-fluid">
 	<div class="span3">
 		<div class="well sidebar-nav account-info">
 			<h2><%= @account.name %></h2>
 			<h3>Id</h3>
-			<h4><a data-toggle="modal" href="#myModal" ><%= @account.id %></a></h4>
+			<h4><a data-toggle="modal" href="#myModal" ><%= @account.referer_id %></a></h4>
 			<h3>Membership type</h3>
 			<h4><%= package_badge_helper %></h4>
 		</div>
 	</div>
 	<div class="span9">
-    <ul class="nav nav-tabs">
-		  <li class="active"><a href="#overview" data-toggle="pill">Overview</a></li>
-		  <li><a href="#commission" data-toggle="pill">Commission Pricing</a></li>
+    <ul id='myTab' class="nav nav-tabs">
+		  <li class="active"><a href="#overview" data-toggle="tab">Overview</a></li>
+		  <li><a href="#commission" data-toggle="tab">Commission Pricing</a></li>
     </ul>
-		<div id="overview" class="tab-pane active fade in">
-			<div class="container-fluid">
-				<div class="row-fluid">
-					<div class="span6">
-						<h3>Generation 1</h3>
-						<table class="table network">
-							<tr>
-								<th>ID</th>
-								<th>Earnings</th>
-							</tr>
-							<% @account.first_generation.each do |item| -%>
-								<tr>
-									<td>
-<%= link_to item.id, user_modal_path(:user_id => item.id), {:remote => true, :class => 'network-modal-link'} %>
-									</td>
-									<td>$<%= @account.earnings_from_user item%>.00</td>
-								</tr>	
-							<% end -%>
-						</table>
-					</div>
-					<div class="span6">
-						<h3>Generation 2</h3>
-						<table class="table network">
-							<tr>
-								<th>ID</th>
-								<th>Earnings</th>
-							</tr>
-							<% @account.second_generation.each do |item| -%>
-								<tr>
-									<td><%= item.id %> </td>
-									<td>$<%= @account.earnings_from_user item%>.00</td>
-								</tr>	
-							<% end -%>
-						</table>
-
-					</div>				
-				</div>				
+		<div id="myTabContent" class="tab-content">
+			<div id="overview" class="tab-pane active fade in">
+				<% if @account.has_platinum_package %>
+					<%= render :partial => 'network' %>
+				<% else %>
+					<%= render :partial => 'pricing' %>				
+				<% end -%>
 			</div>
-
-		</div>
-		<div id="commission" class="tab-pane fade">
-			<div class="container-fluid">
-				<div class="row-fluid">
-					<div class="span6">
-						<h3>Generation 1</h3>
-					</div>
-					<div class="span6">
-						<h3>Generation 2</h3>
-					</div>				
-				</div>				
+			<div id="commission" class="tab-pane fade">
+						<%= render :partial => 'commission' %>
 			</div>
-
 		</div>
 	</div>
 </div>
@@ -101,19 +60,11 @@
 	<div class="modal-body">
 		<dl class="dl-horizontal">
 			<dt>ID:</dt>
-			<dd><%= @account.id %>  </dd>
+			<dd><%= @account.referer_id %>  </dd>
 			<dt>Referred by: </dt>
-			<dd><%= @account.parent.name %>	(ID: <%= @account.parent.id %>) </dd>
+			<dd><%= @account.parent.name %>	(ID: <%= @account.parent.referer_id %>) </dd>
 		</dl>
 
-	</div>
-</div>
-
-<div class="modal fade" id="network-modal"></div>
-
-
-			<p>
-		</div>
 	</div>
 </div>
 

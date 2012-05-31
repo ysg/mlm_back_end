@@ -9,7 +9,9 @@ User.delete_all
 root = User.create
 root.name = 'root'
 root.package = 1
+root.referer_id = 123456
 root.save
+
 
 ch1 = root.children.create
 ch1.name = 'child 1'

@@ -1,7 +1,7 @@
 class AccountsController < ApplicationController
-
+	before_filter :login_required
   def show
-    @account = User.find_by_name('child 1')
+    @account = current_user
 
     respond_to do |format|
       format.html # show.html.erb
