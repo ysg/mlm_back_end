@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
 PACKAGE_IDS = { :platinum => 1, :gold => 2, :free => 3 }
+PACKAGE_COSTS = { "1" => 299, "2" => 99, "3" => 0 }
+
+has_many :payment_notifications
 
 has_ancestry :cache_depth => true
 
@@ -24,6 +27,7 @@ attr_accessible :cell, :city, :company, :ein, :home_phone, :spouse_name, :state,
      user.package = params["package"] if params["package"].present?
      #user.referred_by = params["referred_by"] if params["referred_by"].present?
      user.referer_id = User.generate_referer_id
+     user.purchased_at = nil
    end
   end
 
@@ -73,5 +77,25 @@ attr_accessible :cell, :city, :company, :ein, :home_phone, :spouse_name, :state,
   def self.generate_referer_id
     Time.now.to_i.to_s[-6,6]
   end
+
+  def paypal_url(return_url, notify_url)
+    values = {
+      :business => 'seller_1338452369_biz@gmail.com',
+      :cmd => '_xclick',
+      :return => return_url,
+      :amount => PACKAGE_COSTS[self.package.to_s],
+      :item_name => PACKAGE_IDS.index(self.package).to_s+" Package",
+      :custom => self.id,
+      :notify_url => notify_url
+    }
+    "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
+  end
+
+
+
+
+
+
+
 
 end

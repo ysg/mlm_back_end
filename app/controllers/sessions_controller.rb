@@ -5,6 +5,10 @@ class SessionsController < ApplicationController
   def create
    user = User.from_omniauth(env["omniauth.auth"],params)
    session[:user_id] = user.id
+   #Redirect to paypal if from signup
+   if (/identit/.match(request.referer).present? && user.package!=3)
+     redirect_to user.paypal_url(login_url, payment_notifications_url) and return
+   end
    session["return_to"] = params[:return_to] if params[:return_to].present?
    if session["return_to"].present?
     return_page = session["return_to"]

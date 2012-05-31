@@ -1,4 +1,6 @@
 MlmBackEnd::Application.routes.draw do
+  resources :payment_notifications
+
 	resources :users, :path => '/admin/users'
 	resources :accounts, only: [:show]
   resources :identities, only: [:new]
