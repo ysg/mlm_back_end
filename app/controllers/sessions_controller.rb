@@ -26,7 +26,6 @@ class SessionsController < ApplicationController
   end
 
   def failure
-   session["return_to"] = request.referer unless session[:return_to].present?
    redirect_to login_path, alert: "Authentication failed, please try again."
   end
 end

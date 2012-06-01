@@ -1,6 +1,5 @@
 class IdentitiesController < ApplicationController
   def new
-    session["return_to"] = request.referer unless session[:return_to].present?
     @identity = env['omniauth.identity']
     @user = User.new
     Identity::USER_ATTRIBUTES.each do |attr|
