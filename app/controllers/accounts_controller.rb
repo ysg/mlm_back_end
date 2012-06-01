@@ -10,7 +10,7 @@ class AccountsController < ApplicationController
   end
 
 	def user_modal
-    @user = User.find(params[:user_id])
+    @user = User.find_by_referer_id(params[:user_id])
 	  if request.xhr?
 			render :partial => 'user_modal'
 	  end

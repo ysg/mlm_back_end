@@ -6,9 +6,9 @@
 	<div class="modal-body">
 		<dl class="dl-horizontal">
 			<dt>ID:</dt>
-			<dd><%= @user.id %>  </dd>
+			<dd><%= @user.referer_id %>  </dd>
 			<dt>Referred by: </dt>
-			<dd><%= @user.parent.name %>	(ID: <%= @user.parent.id %>) </dd>
+			<dd><%= @user.parent.name %>	(ID: <%= @user.parent.referer_id %>) </dd>
 		</dl>
 	</div>
 </div>
