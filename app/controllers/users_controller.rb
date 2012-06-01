@@ -29,6 +29,8 @@ class UsersController < ApplicationController
   end
 
   def upgrade_to_premium
+    redirect_to root_url and return if current_user.package==1
+
     current_package_cost = User::PACKAGE_COSTS[current_user.package.to_s]
     platinum_package_cost = User::PACKAGE_COSTS["1"]
     payment_amount = platinum_package_cost - current_package_cost

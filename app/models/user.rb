@@ -81,6 +81,7 @@ attr_accessible :cell, :city, :company, :ein, :home_phone, :spouse_name, :state,
   def paypal_url(return_url, notify_url, amount=nil, upgrade=false)
     amount = PACKAGE_COSTS[self.package.to_s] if amount.nil?
     package_name = upgrade==false ? PACKAGE_IDS.index(self.package).to_s+" Package" : "platinum Package Upgrade"
+    custom_field = upgrade==false ? self.id : "#{self.id}-package_upgrade"
 
     values = {
       :business => 'seller_1338452369_biz@gmail.com',
@@ -88,7 +89,7 @@ attr_accessible :cell, :city, :company, :ein, :home_phone, :spouse_name, :state,
       :return => return_url,
       :amount => amount,
       :item_name => package_name,
-      :custom => self.id,
+      :custom => custom_field,
       :notify_url => notify_url
     }
     "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
