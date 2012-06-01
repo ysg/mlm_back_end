@@ -11,7 +11,7 @@ class PaymentNotificationsController < ApplicationController
     #puts"-----------------------pn end----------------------------------"
     PaymentNotification.create!(:params => params, :user_id => params[:custom].split("-")[0], :status => params[:payment_status], :transaction_id => params[:txn_id])
     if(/package_upgrade/.match(params[:custom]).present?)
-      u = current_user
+      u = User.find(params[:custom])
       u.package = 1
       u.save
     end
