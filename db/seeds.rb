@@ -16,7 +16,7 @@ root.referer_id = 123456
 #root.password_confirmation = 'holanda'
 root.save
 
-id_andy = Identity.create :name => 'Andy', :email => 'andy@bpb.com', :password => 'holanda', :password_confirmation => 'holanda'
+id_andy = Identity.create :name => 'Andy', :email => 'andy@bpb.com', :password => 'holanda', :password_confirmation => 'holanda', :package => 1, :referer_id => 654321
 
 andy = root.children.create
 andy.name = 'Andy'
@@ -27,7 +27,7 @@ andy.provider = 'identity'
 andy.uid = id_andy.id
 andy.save
 
-id_ysg = Identity.create :name => 'Jayandra', :email => 'jayandra@bpb.com', :password => 'holanda', :password_confirmation => 'holanda'
+id_ysg = Identity.create :name => 'Jayandra', :email => 'jayandra@bpb.com', :password => 'holanda', :password_confirmation => 'holanda', :package => 1, :referer_id => 654321
 
 ysg = andy.children.create 
 ysg.name = 'Jayandra'
