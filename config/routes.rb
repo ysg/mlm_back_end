@@ -1,7 +1,11 @@
 MlmBackEnd::Application.routes.draw do
   resources :payment_notifications
 
-	resources :users, :path => '/admin/users'
+	resources :users, :path => '/admin/users' do
+    collection do
+      get "get_referer_name"
+    end
+  end
 	resources :accounts, only: [:show]
   resources :identities, only: [:new]
   # The priority is based upon order of creation:

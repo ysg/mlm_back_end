@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  http_basic_authenticate_with :name => "andy", :password => "thering"
+  http_basic_authenticate_with :name => "andy", :password => "thering", :except => [:get_referer_name]
   # GET /users
   # GET /users.json
   def index
@@ -20,6 +20,11 @@ class UsersController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @user }
     end
+  end
+
+  def get_referer_name
+    @user = User.find_by_referer_id(params[:referer_id])
+    render json: @user.to_json(:only => [ :name, :referer_id ])
   end
 
 #  # GET /users/new

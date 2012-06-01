@@ -76,14 +76,16 @@
 	<%= label_tag :package, "Package *" %>
 	<%= select_tag :package, options_for_select(User::PACKAGE_IDS.inject({}){|memo,(k,v)| memo[k.to_s] = v; memo},@identity.try(:package)) %>
 </div>
-
-<div class="field">
-	<%= label_tag :referred_by, "Rererred By *" %>
-	<%= text_field_tag :referred_by, @identity.try(:referred_by), :disabled => true %>
-</div>
 <div class="field">
 	<%= label_tag :referer_id, "Referer ID *" %>
 	<%= text_field_tag :referer_id, @identity.try(:referer_id) %>
+	<span id="no_referer_id" class="label label-important" style="display:none">Sorry, the Referer ID does not exist</span>
 </div>
+<div class="field">
+	<%= label_tag :referred_by, "Rererred By *" %>
+	<%= text_field_tag :referred_by, @identity.try(:referred_by), :disabled => true %>
+	<%= image_tag("loading.gif", :style=>"display:none", :id => "loading_referer_name") %>
+</div>
+
 <div class="actions"><%= submit_tag "Register" %></div>
 <% end %>
