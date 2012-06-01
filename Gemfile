@@ -37,6 +37,10 @@ gem 'bootstrap-generators', '~> 2.0'
 gem 'simple_form', '~> 2.0'
 gem 'ancestry'
 gem 'kaminari'
+
+group :development do
+gem 'annotate', '~> 2.4.1.beta'
+  end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

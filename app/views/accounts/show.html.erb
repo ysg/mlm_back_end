@@ -1,4 +1,14 @@
 <% content_for :nav_links do %>
+<ul class="nav">
+<li class="divider-vertical"></li>
+<li><%= link_to 'Your Account', my_account_path %></li>
+<li class="divider-vertical"></li>
+    <li><a href="#about">About</a></li>
+    <li class="divider-vertical"></li>
+    <li><a href="#help">Help</a></li>
+    <li class="divider-vertical"></li>
+
+</ul>
 <div class="btn-group pull-right">
 	<a class="btn dropdown-toggle" href="#" data-toggle="dropdown">
 		<i class="icon-user"></i>
@@ -9,27 +19,23 @@
 		<li>
 			<%= link_to "Sign Out", logout_path %>
 		</li>
+		<li>
+			<%= link_to "Edit Account", "#" %>
+		</li>
 	</ul>
 </div>
-<div class="nav-collapse">
-  <ul class="nav pull-right">
-		<li><%= link_to 'My Account', my_account_path %></li>
-		<li><%= link_to 'My Payments', payment_notifications_path %></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#help">Help</a></li>
-  </ul>
-</div>
+
 <% end %>
 
 <div class="row-fluid">
 	<div class="span3">
 		<div class="well sidebar-nav account-info">
 			<h2><%= @account.name %></h2>
-			<h3>Id</h3>
-			<h4><a data-toggle="modal" href="#myModal" ><%= @account.referer_id %></a></h4>
-			<h3>Membership type</h3>
-			<h4><%= package_badge_helper %></h4>
-			<h3>Current earnings</h3>
+			<h4>Id - <a data-toggle="modal" href="#myModal" ><%= @account.referer_id %></a></h4><br />
+			
+			<h3>Membership Type</h3>
+			<h4><%= package_badge_helper %></h4><br />
+			<h3>Current Earnings</h3>
 			<h4>$<%= @account.current_earnings %>.00</h4>
 
 		</div>

@@ -53,3 +53,8 @@ a.green_button:hover{
 .label_package_2{background-color: #F89406 !important;}
 .label_package_3{background-color: #3A87AD !important;}
 .label_package_1 a, .label_package_2 a, .label_package_3 a{color:#ffffdd !important;}
+
+.sign-in{width:30%; margin:0 auto;}
+.sign-up{width:30%; margin:0 auto;}
+.field{width:50%; float:left; text-align:center; margin-bottom:20px;}
+.actions{text-align:center;}

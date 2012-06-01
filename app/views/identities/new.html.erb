@@ -8,84 +8,28 @@
       </ul>
     </div>
 <% end %>
-<h3>New Account</h3>
-<%= form_tag "/auth/identity/register" do %>
-<% if @identity && @identity.errors.any? %>
- <div class="error_messages">
- <h2><%= pluralize(@identity.errors.count, "error") %> prohibited this account from being saved:</h2>
- <ul>
- <% @identity.errors.full_messages.each do |msg| %>
- <li><%= msg %></li>
- <% end %>
- </ul>
- </div>
-<% end %>
-<div class="field">
- <%= label_tag :name, "Name *" %>
- <%= text_field_tag :name, @identity.try(:name) %>
-</div>
-<div class="field">
- <%= label_tag :email, "Email *" %>
- <%= text_field_tag :email, @identity.try(:email) %>
-</div>
-<div class="field">
- <%= label_tag :password, "Password *" %>
- <%= password_field_tag :password %>
-</div>
-<div class="field">
- <%= label_tag :password_confirmation, "Confirm Password *" %>
- <%= password_field_tag :password_confirmation %>
-</div>
-<div class="field">
- <%= label_tag :company %>
- <%= text_field_tag :company, @user.try(:company) %>
-</div>
-<div class="field">
-	<%= label_tag :spouse_name %>
-	<%= text_field_tag :spouse_name, @user.try(:spouse_name) %>
-</div>
-<div class="field">
- <%= label_tag :street_address %>
- <%= text_field_tag :street_address, @user.try(:street_address) %>
-</div>
-<div class="field">
-	<%= label_tag :city %>
-	<%= text_field_tag :city, @user.try(:city) %>
-</div>
-<div class="field">
-	<%= label_tag :state %>
-	<%= text_field_tag :state, @user.try(:state) %>
-</div>
-<div class="field">
-	<%= label_tag :zip %>
-	<%= text_field_tag :zip, @user.try(:zip) %>
-</div>
-<div class="field">
-	<%= label_tag :ein %>
-	<%= text_field_tag :ein, @user.try(:ein) %>
-</div>
-<div class="field">
-	<%= label_tag :home_phone %>
-	<%= text_field_tag :home_phone, @identity.try(:home_phone) %>
-</div>
-<div class="field">
-	<%= label_tag :cell %>
-	<%= text_field_tag :cell, @identity.try(:cell) %>
-</div>
-<div class="field">
-	<%= label_tag :package, "Package *" %>
-	<%= select_tag :package, options_for_select(User::PACKAGE_IDS.inject({}){|memo,(k,v)| memo[k.to_s] = v; memo},@identity.try(:package)) %>
-</div>
-<div class="field">
-	<%= label_tag :referer_id, "Referer ID *" %>
-	<%= text_field_tag :referer_id, @identity.try(:referer_id) %>
-	<span id="no_referer_id" class="label label-important" style="display:none">Sorry, the Referer ID does not exist</span>
-</div>
-<div class="field">
-	<%= label_tag :referred_by, "Rererred By *" %>
-	<%= text_field_tag :referred_by, @identity.try(:referred_by), :disabled => true %>
-	<%= image_tag("loading.gif", :style=>"display:none", :id => "loading_referer_name") %>
-</div>
+<center><h3>Create Account</h3><center>
+<%= render :partial => 'form' %><br />
+<hr class="soften"></hr>
+<center><h2>Choose between the following 3 account types</h2></center><br />
 
-<div class="actions"><%= submit_tag "Register" %></div>
-<% end %>
+<div class="row-fluid">
+	<section>
+<div class="span4">
+<h2><span class="label label_package_1">Platinum</span></h2>
+<p>as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncov</p>
+
+</div>
+<div class="span4">
+<h2><span class="label label_package_2">Gold</span></h2>
+<p>as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncov</p>
+
+</div>
+<div class="span4">
+<h2><span class="label label_package_3">Free</span></h2>
+<p>as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncov</p>
+
+
+</div>
+</section>
+</div>

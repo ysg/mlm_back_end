@@ -1,0 +1,64 @@
+<%= form_tag "/auth/identity/register", class: "form-inline" do %>
+<% if @identity && @identity.errors.any? %>
+ <div class="error_messages">
+ <h2><%= pluralize(@identity.errors.count, "error") %> prohibited this account from being saved:</h2>
+ <ul>
+ <% @identity.errors.full_messages.each do |msg| %>
+ <li><%= msg %></li>
+ <% end %>
+ </ul>
+ </div>
+<% end %>
+<div class="field">
+ <%= text_field_tag :name, @identity.try(:name), placeholder: 'Name *' %>
+</div>
+<div class="field">
+ <%= text_field_tag :email, @identity.try(:email), placeholder: "Email *" %>
+</div>
+<div class="field">
+ <%= password_field_tag :password, placeholder: "Password *" %>
+</div>
+<div class="field">
+ <%= password_field_tag :password_confirmation, placeholder: "Confirm Password *" %>
+</div>
+<div class="field">
+ <%= text_field_tag :company, @user.try(:company), placeholder: "Company" %>
+</div>
+<div class="field">
+	<%= text_field_tag :spouse_name, @user.try(:spouse_name), placeholder: "Spouse Name" %>
+</div>
+<div class="field">
+ <%= text_field_tag :street_address, @user.try(:street_address), placeholder: "Street Address *" %>
+</div>
+<div class="field">
+	<%= text_field_tag :city, @user.try(:city), placeholder: "City *" %>
+</div>
+<div class="field">
+	<%= text_field_tag :state, @user.try(:state), placeholder: "State/Province *" %>
+</div>
+<div class="field">
+	<%= text_field_tag :zip, @user.try(:zip), placeholder: "Zip/Postal *" %>
+</div>
+<div class="field">
+	<%= text_field_tag :ein, @user.try(:ein), placeholder: "SS# or EIN" %>
+</div>
+<div class="field">
+	<%= text_field_tag :home_phone, @identity.try(:home_phone), placeholder: "Home Phone *" %>
+</div>
+<div class="field">
+	<%= text_field_tag :cell, @identity.try(:cell), placeholder: "Cell" %>
+</div>
+<div class="field">
+	<%= select_tag :package, options_for_select(User::PACKAGE_IDS.inject({}){|memo,(k,v)| memo[k.to_s] = v; memo},@identity.try(:package)) %>
+</div>
+<div class="field">
+	<%= text_field_tag :referer_id, @identity.try(:referer_id), placeholder: "Referer ID *" %>
+	<span id="no_referer_id" class="label label-important" style="display:none">Sorry, the Referer ID does not exist</span>
+</div>
+<div class="field">
+	<%= text_field_tag :referred_by, @identity.try(:referred_by), :disabled => true, placeholder: "Referer Name" %>
+	<%= image_tag("loading.gif", :style=>"display:none", :id => "loading_referer_name") %>
+</div>
+
+<div class="actions"><%= submit_tag "Register", class: "btn btn-large btn-info" %><p>If you chose a paid account, you will be redirected to PayPal</p></div>
+<% end %>

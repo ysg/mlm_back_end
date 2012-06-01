@@ -8,8 +8,8 @@ development:
   encoding: unicode
   database: mlm_back_end_development
   pool: 5
-  username: postgres
-  password: postgres
+  username: andyjbas
+  password: 
 
 
 # Warning: The database defined as "test" will be erased and
@@ -20,13 +20,5 @@ test:
   encoding: unicode
   database: mlm_back_end_test
   pool: 5
-  username: postgres
-  password: postgres
-
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: mlm_back_end_production
-  pool: 5
-  username: postgres
-  password: postgres
+  username: andyjbas
+  password: 

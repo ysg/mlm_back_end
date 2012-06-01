@@ -4,10 +4,12 @@
 				<% if current_user %>
         	<li><%= link_to "Welcome #{current_user.name}", my_account_path %></li>
         <% end %>
-				<li><a href="/">Home</a></li>
+		<li class="divider-vertical"></li>		
         <li><a href="#about">About</a></li>
+        <li class="divider-vertical"></li>
         <li><a href="#help">Help</a></li>
-				<li><%= link_to 'Admin', users_path %></li>
+        <li class="divider-vertical"></li>
+				
       </ul>
     </div>
 <% end %>
@@ -15,18 +17,45 @@
 	Go to <%= link_to "My Account", my_account_path %>
 <% else %>
 	<%= form_tag "/auth/identity/callback" do %>
-	 <div class="field">
-		<%= label_tag :auth_key, "Email" %><br>
-		<%= text_field_tag :auth_key %>
-	 </div>
-	 <div class="field">
-		<%= label_tag :password %><br>
-		<%= password_field_tag :password %>
-	 </div>
-	 <div class="actions">
-		<%= submit_tag "Login" %>
-		or <%= link_to "Register", new_identity_path %>
-	 </div>
+	
+
+<div class="row-fluid">
+	<div class="span12">
+	<div class="hero-unit">
+		<center>a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</center>
+	</div>
+	</div>
+</div>
+
+<div class="row-fluid">
+	<div class="span6">
+	<div class="sign-in">
+		<center><h1>Sign In</h1></center><br />
+		<div class="">
+			<%= label_tag :auth_key, "Email" %>
+			<%= text_field_tag :auth_key %>
+	 	</div>
+	 	<div class="">
+			<%= label_tag :password %>
+			<%= password_field_tag :password %>
+	 	</div>
+	 	<div class="actions">
+			<%= submit_tag "Login", class: "btn btn-large btn-info" %><br /><br />
+			<%= link_to "Forgot Password?", "#" %>
+	 	</div>
+	</div>
+	</div>
 	<% end %>
+
+	<div class="span6">
+		<center><h1>Sign Up</h1></center><br /><br />
+	<div class="sign-up">
+		<h3><center>Don't have an account?</center></h3><br />
+		<center><%= link_to "Register Here", new_identity_path, class: "btn btn-large btn-info" %></center>
+	</div>
+	</div>
+</div>
 <% end %>
 
