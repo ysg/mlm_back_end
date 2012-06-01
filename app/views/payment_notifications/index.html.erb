@@ -1,0 +1,24 @@
+<% if Rails.env=="development" %>
+<p>Sorry, paypal does not send any notification to you local machine.....</p>
+<% end %>
+
+<% if Rails.env=="production" %>
+	<table class="table table-bordered">
+		<thead>
+		<tr>
+			<th>Title</th>
+			<th>Amount</th>
+			<th>Transaction Date</th>
+		</tr>
+		</thead>
+		<tbody>
+		<% @payments.each do |payment| %>
+			<tr>
+				<td><%= payment.params["item_name"] %></td>
+				<td><%= payment.params["payment_gross"] %></td>
+				<td><%= payment.created_at.strftime('%d %B %Y') %></td>
+			</tr>
+		<% end %>
+		</tbody>
+	</table>
+<% end %>
