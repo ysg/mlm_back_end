@@ -6,47 +6,68 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 User.delete_all
+
 root = User.create
 root.name = 'root'
 root.package = 1
 root.referer_id = 123456
+#root.password = 'holanda'
+#root.password_confirmation = 'holanda'
 root.save
 
 
-ch1 = root.children.create
-ch1.name = 'child 1'
-ch1.email = 'child1@mlm.com'
-ch1.package = 1
-ch1.save
+andy = root.children.create
+andy.name = 'Andy'
+andy.email = 'andy@bpb.com'
+#andy.password = 'holanda'
+#andy.password_confirmation = 'holanda'
+andy.package = 1
+andy.referer_id = 654321
+andy.save
 
-ch2 = root.children.create 
-ch2.name = 'child 2'
-ch2.email = 'child2@mlm.com'
-ch2.package = 1
-ch2.save
+ysg = andy.children.create 
+ysg.name = 'Jayandra'
+ysg.email = 'jayandra@bpb.com'
+ysg.package = 1
+ysg.referer_id = 123654
+#ysg.password = 'holanda'
+#ysg.password_confirmation = 'holanda'
+ysg.save
 
-ch3 = root.children.create
-ch3.name = 'child 3'
-ch3.email = 'child3@mlm.com'
-ch3.package = 2
-ch3.save
+ah = andy.children.create 
+#ah.password = 'holanda'
+#ah.password_confirmation = 'holanda'
+ah.name = 'Agustin Hernandez'
+ah.email = 'agustin@bpb.com'
+ah.package = 2
+ah.referer_id = 654123
+ah.save
 
-sch1 = ch1.children.create
-sch1.name = 'subch 1.1'
-sch1.email = 'subchild_1_1@mlm.com'
-sch1.package = 1
-sch1.save
+juan = ysg.children.create
+juan.name = 'Juan Pequenio'
+juan.email = 'juan@bpb.com'
+juan.package = 1
+juan.referer_id = 666666
+#juan.password = 'holanda'
+#juan.password_confirmation = 'holanda'
+juan.save
 
-sch2 = ch2.children.create 
-sch2.name = 'subch 2.1', 
-sch2.email = 'subchild_2_1@mlm.com', 
-sch2.package = 3
-sch2.save
+emi = ysg.children.create 
+emi.name = 'Emiliano Garcia', 
+emi.email = 'emiliano@bpb.com', 
+emi.package = 2
+#emi.password = 'holanda'
+#emi.password_confirmation = 'holanda'
+emi.referer_id = 999999
+emi.save
 
-sch3 = ch3.children.create
-sch3.name = 'subch 3.1'
-sch3.email = 'subchild_3_1@mlm.com'
-sch3.package = 1
-sch3.save
+remer = ysg.children.create
+remer.name = 'Miguel Revetria'
+remer.email = 'remer@bpb.com'
+remer.package = 3
+remer.referer_id = 111111
+#remer.password = 'holanda'
+#remer.password_confirmation = 'holanda'
+remer.save
 #users = 
 #	User.create([{ name: 'Agustin', email: 'agustinh17@gmail.com', parent_id: root.id}, { name: 'Andy', email: 'andyjbas@gmail.com', parent_id: root.id} ])
