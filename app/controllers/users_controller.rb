@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  http_basic_authenticate_with :name => "andy", :password => "thering", :except => [:get_referer_name]
+  http_basic_authenticate_with :name => "andy", :password => "thering",
+                               :except => [:get_referer_name, :upgrade_to_premium]
   # GET /users
   # GET /users.json
   def index
@@ -25,6 +26,13 @@ class UsersController < ApplicationController
   def get_referer_name
     @user = User.find_by_referer_id(params[:referer_id])
     render json: @user.to_json(:only => [ :name, :referer_id ])
+  end
+
+  def upgrade_to_premium
+    current_package_cost = User::PACKAGE_COSTS[current_user.package.to_s]
+    platinum_package_cost = User::PACKAGE_COSTS["1"]
+    payment_amount = platinum_package_cost - current_package_cost
+    redirect_to current_user.paypal_url(my_account_url, payment_notifications_url, payment_amount, true)
   end
 
 #  # GET /users/new

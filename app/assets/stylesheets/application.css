@@ -11,8 +11,22 @@
  *= require_self
  *= require_tree .
 */
-*************** NOTIFICATION MESSAGE STYLES ******************/
-/*************** media.html ***********************************/
+
+.center{text-align: center;}
+a.green_button{
+    background: none repeat scroll 0 0 #5BB75B;
+    border: 1px solid #CCCCCC;
+    box-shadow: none;
+    color: #fff;
+    font-weight: bold;
+    margin: 0 0 0 5px;
+    padding: 8px 10px;
+    width: auto;
+    text-decoration: none;
+}
+a.green_button:hover{
+    text-decoration: none;
+}
 
 .notifyMessage { padding: 7px 10px; font-weight: bold; margin: 10px 0; display: none; }
 .notifySuccess { border: 1px solid #C1D779; background: #EFFEB9; display: block; }

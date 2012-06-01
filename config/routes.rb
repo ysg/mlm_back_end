@@ -4,6 +4,7 @@ MlmBackEnd::Application.routes.draw do
 	resources :users, :path => '/admin/users' do
     collection do
       get "get_referer_name"
+      get "upgrade_to_premium"
     end
   end
 	resources :accounts, only: [:show]

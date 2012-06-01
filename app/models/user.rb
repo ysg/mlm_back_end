@@ -78,13 +78,16 @@ attr_accessible :cell, :city, :company, :ein, :home_phone, :spouse_name, :state,
     Time.now.to_i.to_s[-6,6]
   end
 
-  def paypal_url(return_url, notify_url)
+  def paypal_url(return_url, notify_url, amount=nil, upgrade=false)
+    amount = PACKAGE_COSTS[self.package.to_s] if amount.nil?
+    package_name = upgrade==false ? PACKAGE_IDS.index(self.package).to_s+" Package" : "platinum Package Upgrade"
+
     values = {
       :business => 'seller_1338452369_biz@gmail.com',
       :cmd => '_xclick',
       :return => return_url,
-      :amount => PACKAGE_COSTS[self.package.to_s],
-      :item_name => PACKAGE_IDS.index(self.package).to_s+" Package",
+      :amount => amount,
+      :item_name => package_name,
       :custom => self.id,
       :notify_url => notify_url
     }
