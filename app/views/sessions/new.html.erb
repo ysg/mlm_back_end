@@ -2,7 +2,7 @@
     <div class="nav-collapse">
       <ul class="nav pull-right">
 				<% if current_user %>
-        	<li><a href="/">Welcome <%= current_user.name %></a></li>
+        	<li><%= link_to "Welcome #{current_user.name}", my_account_path %></li>
         <% end %>
 				<li><a href="/">Home</a></li>
         <li><a href="#about">About</a></li>
@@ -11,17 +11,22 @@
       </ul>
     </div>
 <% end %>
-<%= form_tag "/auth/identity/callback" do %>
- <div class="field">
-  <%= label_tag :auth_key, "Email" %><br>
-  <%= text_field_tag :auth_key %>
- </div>
- <div class="field">
-  <%= label_tag :password %><br>
-  <%= password_field_tag :password %>
- </div>
- <div class="actions">
-  <%= submit_tag "Login" %>
-  or <%= link_to "Register", new_identity_path %>
- </div>
+<% if current_user %>
+	Go to <%= link_to "My Account", my_account_path %>
+<% else %>
+	<%= form_tag "/auth/identity/callback" do %>
+	 <div class="field">
+		<%= label_tag :auth_key, "Email" %><br>
+		<%= text_field_tag :auth_key %>
+	 </div>
+	 <div class="field">
+		<%= label_tag :password %><br>
+		<%= password_field_tag :password %>
+	 </div>
+	 <div class="actions">
+		<%= submit_tag "Login" %>
+		or <%= link_to "Register", new_identity_path %>
+	 </div>
+	<% end %>
 <% end %>
+
