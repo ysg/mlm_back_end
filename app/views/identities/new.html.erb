@@ -1,10 +1,13 @@
 <% content_for :nav_links do %>
     <div class="nav-collapse">
       <ul class="nav pull-right">
-        <li><a href="/">Home</a></li>
+      	<li class="divider-vertical"></li>
         <li><a href="#about">About</a></li>
+        <li class="divider-vertical"></li>
         <li><a href="#help">Help</a></li>
-				<li><%= link_to 'Admin', users_path %></li>
+        <li class="divider-vertical"></li>
+		<li><%= link_to 'Sign In', root_path %></li>
+		<li class="divider-vertical"></li>
       </ul>
     </div>
 <% end %>
@@ -13,23 +16,24 @@
 <hr class="soften"></hr>
 <center><h2>Choose between the following 3 account types</h2></center><br />
 
-<div class="row-fluid">
+<div style="width:100%; margin: 0 auto;">
 	<section>
-<div class="span4">
+<div style="width:33.33%; float:left;">
 <h2><span class="label label_package_1">Platinum</span></h2>
 <p>as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncov</p>
 
 </div>
-<div class="span4">
+<div style="width:33.33%; float:left;">
 <h2><span class="label label_package_2">Gold</span></h2>
 <p>as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncov</p>
 
 </div>
-<div class="span4">
+<div style="width:33.33%; float:left;">
 <h2><span class="label label_package_3">Free</span></h2>
 <p>as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncov</p>
 
 
 </div>
 </section>
+</div>
 </div>
