@@ -34,7 +34,19 @@ has_many :payment_notifications
 
 has_ancestry :cache_depth => true
 
-attr_accessible :cell, :city, :company, :ein, :home_phone, :spouse_name, :state, :street_address, :zip, :referer_id
+attr_accessible :cell, :city, :company, :ein, :home_phone, :spouse_name, :state, :street_address, :zip
+attr_protected :name, :email, :package, :referer_id
+
+validates :name, presence:true
+validates :email, presence:true, uniqueness:true
+validates :street_address, presence: true
+validates :city, presence: true
+validates :state, presence: true
+validates :zip, presence: true
+validates :home_phone, numericality: true, presence: true
+validates :cell, numericality: true, presence: true
+validates :package, presence: true
+validates :referer_id, presence: true
 
   def self.from_omniauth(auth,params)
    find_by_provider_and_uid(auth["provider"], auth["uid"]) || create_with_omniauth(auth,params)
@@ -133,6 +145,13 @@ attr_accessible :cell, :city, :company, :ein, :home_phone, :spouse_name, :state,
       :notify_url => notify_url
     }
     "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
+  end
+
+  def update_identity
+    identity = Identity.find(self.uid)
+    identity.email = self.email
+    identity.name = self.name
+    identity.save(:validate => false)
   end
 
 

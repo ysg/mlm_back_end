@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  http_basic_authenticate_with :name => "andy", :password => "thering",
-                               :except => [:get_referer_name, :upgrade_to_platinum, :upgrade_to_gold]
+  http_basic_authenticate_with :name => "andy", :password => "thering", :only => [:index, :show]
   # GET /users
   # GET /users.json
   def index
@@ -46,6 +45,35 @@ class UsersController < ApplicationController
     redirect_to current_user.paypal_url(my_account_url, payment_notifications_url, payment_amount, "gold")
   end
 
+  # GET /users/1/edit
+  def edit
+    @user = current_user
+  end
+
+  # PUT /users/1
+  # PUT /users/1.json
+  def update
+    @user = current_user
+    @user.name = params[:user][:name]
+    @user.email = params[:user][:email]
+    accessible_attributes = User.accessible_attributes.to_a
+    accessible_attributes.shift()
+    accessible_attributes.each do |attr|
+      @user.send(attr+"=",params[:user][attr])
+    end
+    respond_to do |format|
+      if @user.save
+        @user.update_identity
+        format.html { redirect_to my_account_url, notice: 'User was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
 #  # GET /users/new
 #  # GET /users/new.json
 #  def new
@@ -55,11 +83,6 @@ class UsersController < ApplicationController
 #      format.html # new.html.erb
 #      format.json { render json: @user }
 #    end
-#  end
-
-#  # GET /users/1/edit
-#  def edit
-#    @user = User.find(params[:id])
 #  end
 
 #  # POST /users
@@ -73,22 +96,6 @@ class UsersController < ApplicationController
 #        format.json { render json: @user, status: :created, location: @user }
 #      else
 #        format.html { render action: "new" }
-#        format.json { render json: @user.errors, status: :unprocessable_entity }
-#      end
-#    end
-#  end
-
-#  # PUT /users/1
-#  # PUT /users/1.json
-#  def update
-#    @user = User.find(params[:id])
-
-#    respond_to do |format|
-#      if @user.update_attributes(params[:user])
-#        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-#        format.json { head :no_content }
-#      else
-#        format.html { render action: "edit" }
 #        format.json { render json: @user.errors, status: :unprocessable_entity }
 #      end
 #    end

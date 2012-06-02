@@ -1,17 +1,63 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<%= form_for(@user, class: "form-inline") do |f|%>
+	<% if @user.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+			<ul>
+			<% @user.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+			</ul>
+		</div>
+	<% end %>
+	<div class="field">
+		<%= f.label :name %>
+		<%= f.text_field :name, :placeholder => 'Name *' %>
+	</div>
+	<div class="field">
+		<%= f.label :email %>
+		<%= f.text_field :email, placeholder: "Email *" %>
+	</div>
+	<div class="field">
+		<%= f.label :company %>
+		<%= f.text_field :company, placeholder: "Company" %>
+	</div>
+	<div class="field">
+		<%= f.label :spouse_name %>
+		<%= f.text_field :spouse_name, placeholder: "Spouse Name" %>
+	</div>
+	<div class="field">
+		<%= f.label :street_address %>
+		<%= f.text_field :street_address, placeholder: "Street Address *" %>
+	</div>
+	<div class="field">
+		<%= f.label :city %>
+		<%= f.text_field :city, placeholder: "City *" %>
+	</div>
+	<div class="field">
+		<%= f.label :state %>
+		<%= f.text_field :state, placeholder: "State/Province *" %>
+	</div>
+	<div class="field">
+		<%= f.label :zip %>
+		<%= f.text_field :zip, placeholder: "Zip/Postal *" %>
+	</div>
+	<div class="field">
+		<%= f.label :ein %>
+		<%= f.text_field :ein, placeholder: "SS# or EIN" %>
+	</div>
+	<div class="field">
+		<%= f.label :home_phone %>
+		<%= f.text_field :home_phone, placeholder: "Home Phone *" %>
+	</div>
+	<div class="field">
+		<%= f.label :cell %>
+		<%= f.text_field :cell, placeholder: "Cell" %>
+	</div>
+	<br />
+	<div style="clear:both"></div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<div class="actions">
+		<%= f.submit "Update", class: "btn btn-large btn-info" %>
+	</div>
 <% end %>
