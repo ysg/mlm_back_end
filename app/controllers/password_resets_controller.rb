@@ -18,7 +18,7 @@ class PasswordResetsController < ApplicationController
 
   def update
     @identity = Identity.find_by_password_reset_token!(params[:id])
-    user = User.find_by_email_and_uid(@identity.email,@identity.id)
+    user = User.find_by_email_and_uid(@identity.email,@identity.id.to_s)
     @identity.package = user.package
     @identity.referer_id = user.referer_id
     @identity.password = params[:identity][:password]
