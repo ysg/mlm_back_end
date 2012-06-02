@@ -4,15 +4,14 @@
 jQuery ->
   $("#referer_id").bind 'change', (event) ->
     referer_id = $(@).val()
-    $("#referred_by").val("")
-    $("#no_referer_id").hide()
+    $("#referred_by").val("").removeAttr("style")
     $("#loading_referer_name").show()
     $.ajax(
       url: "/admin/users/get_referer_name",
       data: { referer_id: referer_id},
     ).done ( response )->
       if(response==null)
-        $("#no_referer_id").show();
+        $("#referred_by").val("Referer does not exist").attr("style","color:#E18B7C");
       else
         $("#referred_by").val(response.name)
-        $("#loading_referer_name").hide()
+      $("#loading_referer_name").hide()
