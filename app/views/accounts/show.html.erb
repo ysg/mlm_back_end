@@ -1,13 +1,14 @@
 <% content_for :nav_links do %>
 <ul class="nav">
-<li class="divider-vertical"></li>
-<li><%= link_to 'Your Account', my_account_path %></li>
-<li class="divider-vertical"></li>
-    <li><a href="#about">About</a></li>
-    <li class="divider-vertical"></li>
-    <li><a href="#help">Help</a></li>
-    <li class="divider-vertical"></li>
-
+	<li class="divider-vertical"></li>
+	<li><%= link_to 'Your Account', my_account_path %></li>
+	<li class="divider-vertical"></li>
+	<li><%= link_to 'Your Payments', payment_notifications_path %></li>
+	<li class="divider-vertical"></li>
+	<li><a href="#about">About</a></li>
+	<li class="divider-vertical"></li>
+	<li><a href="#help">Help</a></li>
+	<li class="divider-vertical"></li>
 </ul>
 <div class="btn-group pull-right">
 	<a class="btn dropdown-toggle" href="#" data-toggle="dropdown">
