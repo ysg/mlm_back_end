@@ -46,6 +46,7 @@ root.package="1"
 root.referer_id = 123456
 root.save
 
+<<<<<<< Updated upstream
 
 id_andy = Identity.create(
     {:name => 'Andy', :email => 'andy@bpb.com', :password => 'holanda', :password_confirmation => 'holanda'}
@@ -53,6 +54,16 @@ id_andy = Identity.create(
 )
 
 andy = root.children.create
+=======
+id_andy = Identity.create :name => 'Andy', :email => 'andyjbas@gmail.com', :password => 'holanda', :password_confirmation => 'holanda', :package => 1, :referer_id => 654321
+
+andy = root.children.create
+andy.name = 'Andy'
+andy.email = 'andyjbas@gmail.com'
+andy.package = 1
+andy.referer_id = 654321
+andy.provider = 'identity'
+>>>>>>> Stashed changes
 andy.uid = id_andy.id
 andy.provider = "identity"
 andy.name = "Andy"
