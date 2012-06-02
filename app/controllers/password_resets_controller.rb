@@ -21,6 +21,12 @@ class PasswordResetsController < ApplicationController
     user = User.find_by_email_and_uid(@identity.email,@identity.id.to_s)
     @identity.package = user.package
     @identity.referer_id = user.referer_id
+    @identity.referer_id = user.street_address
+    @identity.referer_id = user.city
+    @identity.referer_id = user.state
+    @identity.referer_id = user.zip
+    @identity.referer_id = user.home_phone
+    @identity.referer_id = user.cell
     @identity.password = params[:identity][:password]
     @identity.password_confirmation = params[:identity][:password_confirmation]
     @identity.password_reset_token = nil
