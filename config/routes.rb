@@ -1,4 +1,7 @@
 MlmBackEnd::Application.routes.draw do
+
+  resources :password_resets
+
   resources :payment_notifications
 
 	resources :users, :path => '/admin/users' do

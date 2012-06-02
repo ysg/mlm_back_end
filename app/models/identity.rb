@@ -11,18 +11,33 @@
 #
 
 class Identity < OmniAuth::Identity::Models::ActiveRecord
-  USER_ATTRIBUTES = [:package,:referred_by,:referer_id, :home_phone, :cell]
+  USER_ATTRIBUTES = [:package, :referred_by, :referer_id, :home_phone, :cell]
 
- attr_accessible :email, :name, :password_digest, :password, :password_confirmation, *USER_ATTRIBUTES
- attr_accessor *USER_ATTRIBUTES
+  attr_accessible :email, :name, :password_digest, :password, :password_confirmation, *USER_ATTRIBUTES
+  attr_accessor *USER_ATTRIBUTES
 
- validates :name, presence: true
- validates :email, presence: true, uniqueness: true, format: /^[^@\s]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
- validates :package, presence: true
- #validates :referred_by, presence: true
- validates :referer_id, presence: true
- validates :home_phone, numericality: true, allow_blank: true
- validates :cell, numericality: true, allow_blank: true
+  validates :name, presence: true
+  validates :email, presence: true, uniqueness: true, format: /^[^@\s]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
+  validates :package, presence: true
+  #validates :referred_by, presence: true
+  validates :referer_id, presence: true
+  validates :home_phone, numericality: true, allow_blank: true
+  validates :cell, numericality: true, allow_blank: true
 
 
+  def send_password_reset
+    generate_token(:password_reset_token)
+    self.password_reset_sent_at = Time.zone.now
+    user = User.find_by_email_and_uid(self.email,self.id)
+    self.package = user.package
+    self.referer_id = user.referer_id
+    save!
+    UserMailer.password_reset(self).deliver
+  end
+
+  def generate_token(column)
+    begin
+      self[column] = SecureRandom.urlsafe_base64
+    end while Identity.exists?(column => self[column])
+  end
 end
