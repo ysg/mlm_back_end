@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default :from => 'no_reply@mlmbe.com'
 
   def password_reset(user)
     @user = user
