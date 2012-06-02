@@ -32,7 +32,7 @@ class Identity < OmniAuth::Identity::Models::ActiveRecord
   def send_password_reset
     generate_token(:password_reset_token)
     self.password_reset_sent_at = Time.zone.now
-    user = User.find_by_email_and_uid(self.email,self.id)
+    user = User.find_by_email_and_uid(self.email,self.id.to_s)
     Identity::USER_ATTRIBUTES.each do |attr|
       self.send(attr.to_s+"=", user.send(attr.to_s))
     end
