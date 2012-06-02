@@ -13,8 +13,7 @@
 */
 
 .center{text-align: center;}
-a.green_button{
-    background: none repeat scroll 0 0 #5BB75B;
+a.plain_button{
     border: 1px solid #CCCCCC;
     box-shadow: none;
     color: #fff;
@@ -24,7 +23,7 @@ a.green_button{
     width: auto;
     text-decoration: none;
 }
-a.green_button:hover{
+a.plain_button:hover{
     text-decoration: none;
 }
 
@@ -49,7 +48,7 @@ a.green_button:hover{
 .msginfo { border: 1px solid #99c4ea; background: #d1e4f3 url(notifications.png) no-repeat 0 -156px; }
 .msgerror { border: 1px solid #e18b7c; background: #fad5cf url(notifications.png) no-repeat 0 0; }
 
-.label_package_1{}
+.label_package_1{background-color: #999999 !important;}
 .label_package_2{background-color: #F89406 !important;}
 .label_package_3{background-color: #3A87AD !important;}
 .label_package_1 a, .label_package_2 a, .label_package_3 a{color:#ffffdd !important;}

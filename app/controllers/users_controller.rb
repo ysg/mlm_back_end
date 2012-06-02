@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   http_basic_authenticate_with :name => "andy", :password => "thering",
-                               :except => [:get_referer_name, :upgrade_to_premium]
+                               :except => [:get_referer_name, :upgrade_to_platinum, :upgrade_to_gold]
   # GET /users
   # GET /users.json
   def index
@@ -28,13 +28,22 @@ class UsersController < ApplicationController
     render json: @user.to_json(:only => [ :name, :referer_id ])
   end
 
-  def upgrade_to_premium
+  def upgrade_to_platinum
     redirect_to root_url and return if current_user.package==1
 
     current_package_cost = User::PACKAGE_COSTS[current_user.package.to_s]
     platinum_package_cost = User::PACKAGE_COSTS["1"]
     payment_amount = platinum_package_cost - current_package_cost
-    redirect_to current_user.paypal_url(my_account_url, payment_notifications_url, payment_amount, true)
+    redirect_to current_user.paypal_url(my_account_url, payment_notifications_url, payment_amount, "platinum")
+  end
+
+  def upgrade_to_gold
+    redirect_to root_url and return if ( (current_user.package==1) || (current_user.package==2) )
+
+    current_package_cost = User::PACKAGE_COSTS[current_user.package.to_s]
+    gold_package_cost = User::PACKAGE_COSTS["2"]
+    payment_amount = gold_package_cost - current_package_cost
+    redirect_to current_user.paypal_url(my_account_url, payment_notifications_url, payment_amount, "gold")
   end
 
 #  # GET /users/new

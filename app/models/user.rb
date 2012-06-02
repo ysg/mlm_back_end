@@ -106,10 +106,22 @@ attr_accessible :cell, :city, :company, :ein, :home_phone, :spouse_name, :state,
     Time.now.to_i.to_s[-6,6]
   end
 
-  def paypal_url(return_url, notify_url, amount=nil, upgrade=false)
+  def paypal_url(return_url, notify_url, amount=nil, upgrade_package=false)
+    # Set default package cost to the current package set through sign-up
     amount = PACKAGE_COSTS[self.package.to_s] if amount.nil?
-    package_name = upgrade==false ? PACKAGE_IDS.index(self.package).to_s+" Package" : "platinum Package Upgrade"
-    custom_field = upgrade==false ? self.id : "#{self.id}-package_upgrade"
+    package_name = PACKAGE_IDS.index(self.package).to_s+" Package"
+    # the custom field is used to determine the user to assign the payment in PaymentNotifications#create
+    custom_field = self.id
+
+    if upgrade_package == "platinum"
+      package_name = "platinum Package Upgrade"
+      custom_field = "#{self.id}-platinum_package_upgrade"
+    end
+
+    if upgrade_package == "gold"
+      package_name = "gold Package Upgrade"
+      custom_field = "#{self.id}-gold_package_upgrade"
+    end
 
     values = {
       :business => 'seller_1338452369_biz@gmail.com',
