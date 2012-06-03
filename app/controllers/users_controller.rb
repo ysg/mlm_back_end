@@ -54,13 +54,9 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = current_user
-    @user.name = params[:user][:name]
-    @user.email = params[:user][:email]
-    accessible_attributes = User.accessible_attributes.to_a
-    accessible_attributes.shift()
-    accessible_attributes.each do |attr|
-      @user.send(attr+"=",params[:user][attr])
-    end
+    @user.set_user_accessible_attributes(params[:user])
+    @user.set_user_protected_attributes(params[:user])
+
     respond_to do |format|
       if @user.save
         @user.update_identity

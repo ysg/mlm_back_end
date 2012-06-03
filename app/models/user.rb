@@ -54,21 +54,38 @@ validates :referer_id, presence: true
 
   def self.create_with_omniauth(auth,params)
    User.find_by_referer_id(params["referer_id"]).children.create! do |user|
-     accessible_attributes = User.accessible_attributes.to_a
-     accessible_attributes.shift()
-     accessible_attributes.each do |attr|
-       user[attr.to_sym] = params[attr]
-     end
-
+     user.set_user_accessible_attributes(params)
      user.provider = auth["provider"]
      user.uid = auth["uid"]
      user.name = auth["info"]["name"]
      user.email = auth["info"]["email"]
      user.package = params["package"] if params["package"].present?
-     #user.referred_by = params["referred_by"] if params["referred_by"].present?
      user.referer_id = User.generate_referer_id
      user.purchased_at = nil
    end
+  end
+
+  def set_associated_identity_attributes
+    identity = Identity.find(self.uid)
+    identity.email = self.email
+    identity.name = self.name
+    identity.set_associated_user_attributes
+    identity.save
+  end
+
+  def set_user_accessible_attributes(params)
+    accessible_attributes = User.accessible_attributes.to_a
+    accessible_attributes.shift()
+    accessible_attributes.each do |attr|
+      self[attr.to_s] = params[attr] if params[attr].present?
+    end
+  end
+
+  def set_user_protected_attributes(params)
+    self[:name] = params["name"] if params["name"].present?
+    self[:email] = params["email"] if params["email"].present?
+    self[:package] = params["package"] if params["package"].present?
+    self[:referer_id] = params["referer_id"] if params["referer_id"].present?
   end
 
 	def has_platinum_package
