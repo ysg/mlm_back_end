@@ -43,6 +43,7 @@ root.state="root state"
 root.zip="root zip"
 root.home_phone="1111111"
 root.package="1"
+root.cell='123123123'
 root.referer_id = 123456
 root.save
 
