@@ -78,7 +78,7 @@ validates :referer_id, presence: true
     accessible_attributes = User.accessible_attributes.to_a
     accessible_attributes.shift()
     accessible_attributes.each do |attr|
-      self[attr.to_s] = params[attr] if params[attr].present?
+      self[attr.to_s] = params[attr] #if params[attr].present?
     end
   end
 
