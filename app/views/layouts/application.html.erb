@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Black Pride Beauty App Backend</title>
+  <title>Black Pride Beauty</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <meta name="author" content="">
@@ -17,6 +17,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <% unless request.path == '/' %>
   <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container-fluid">
@@ -36,7 +37,8 @@
 			<%= content_tag :div, content, :class => "notification msgerror" if (msg.is_a?(String) && flash[:alert].present? ) %>
 			<%= content_tag :div, content, :class => "notification msginfo" if (msg.is_a?(String) && flash[:notice].present? ) %>
 		<% end %>
-
+<% else %>
+  <% end %>
     <%= yield %>
 
     <hr>
@@ -44,5 +46,6 @@
       <center><p>&copy; Black Pride Beauty 2012</p></center>
     </footer>
   </div>
+
 </body>
 </html>

@@ -1,4 +1,52 @@
-<div class="page-header">
-  <h1>Static#about</h1>
+<% content_for :nav_links do %>
+    <div class="nav-collapse">
+      <ul class="nav pull-right">
+				<% if current_user %>
+				<li class="divider-vertical"></li>	
+        	<li><%= link_to "Welcome #{current_user.name}", my_account_path %></li>	
+        	<% else %>
+        	<li class="divider-vertical"></li>	
+        	<li><%= link_to 'Sign In', login_path %></li>
+        	<li class="divider-vertical"></li>	
+  			<li><%= link_to 'Sign Up', new_identity_path %></li>
+        <% end %>
+		<li class="divider-vertical"></li>		
+          <li><%= link_to 'About', static_about_path %></li>
+        <li class="divider-vertical"></li>
+        <li><%= link_to 'Help', static_help_path %></li>
+        <li class="divider-vertical"></li>			
+      </ul>
+    </div>
+<% end %>
+<div class="row-fluid"><div class="span2">&nbsp;</div><div class="span8">
+<p>Black Pride Beauty Corp. was established in 2011 with a clear mission: To become a leader and trend setter in the hair weave business while retaining profits and benefits within the black community.</p>
+
+<p>The black community is the main customer base for hair weaves, wigs and other attachments. As such, the community is striving to benefit from the substantial costs and expenditures associated with buying and using attachable hair products. Our corporation is built and formed to do just that: to give the black consumers an opportunity to purchase better hair at lower prices and to establish your own business, selling our products and representing our corporation in your area.</p>
+
+<p>We offer a very generous Limited-Multi-Level business plan that will allow anyone to get involved and gain excellent income potential while being involved in a good thing, benefiting your family, your church and community while rewarding yourself, your friends and the whole black community.</p>
+
+<p>We will soon achieve the leading position in this industry by providing the highest quality of hair products at very competitive pricing, and by introducing new, innovative products that will benefit our customers and sales force simultaneously.</p>
+
+<p>The main points of our Business Plan
+	<ul>
+
+<li>Anyone may join as an Independent Sales Representative.</li>
+<li>You may receive up to 40% discount off retail price of our hair weaves.</li>
+<li>The Executive level may sign a down-line and receive combined commissions (up to 13%) from 2 generations below.</li>
+<li>You may sell our products worldwide via your personalized website.</li>
+<li>We will feed you with new products offerings periodically, to increase your possible benefits from a growing sales and down-line networks.</li>
+</ul>
+
+</p>
+
+<p>Black Pride beauty Corp current products:<br />
+
+Our initial products:
+<ul>
+
+<li>Classic Hair Weaves: Highest quality Indian Remy in 12”, 14” and 16” length. Offered In 4 colors, in straight/Yaki and wave styles. (We accept special orders for other colors and lengths).</li>
+<li>Comb-N-Weave attachable hair weaves with unprecedented ease of daily attachment/detachment and extended life for your hair weaves.</li>
+</ul>
+</p>
 </div>
-<p>Find me in app/views/static/about.html.erb</p>
+</div>
