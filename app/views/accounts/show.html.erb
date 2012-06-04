@@ -1,13 +1,11 @@
 <% content_for :nav_links do %>
 <ul class="nav">
 	<li class="divider-vertical"></li>
-	<li><%= link_to 'Your Account', my_account_path %></li>
+	<li><%= link_to 'Account Home', my_account_path %></li>
 	<li class="divider-vertical"></li>
-	<li><%= link_to 'Your Payments', payment_notifications_path %></li>
-	<li class="divider-vertical"></li>
-	<li><a href="#about">About</a></li>
-	<li class="divider-vertical"></li>
-	<li><a href="#help">Help</a></li>
+	  <li><%= link_to 'About', static_about_path %></li>
+        <li class="divider-vertical"></li>
+        <li><%= link_to 'Help', static_help_path %></li>
 	<li class="divider-vertical"></li>
 </ul>
 <div class="btn-group pull-right">
@@ -17,12 +15,9 @@
 		<span class="caret"></span>
 	</a>
 	<ul class="dropdown-menu">
-		<li>
-			<%= link_to "Sign Out", logout_path %>
-		</li>
-		<li>
-			<%= link_to "Edit Account", edit_user_path(current_user) %>
-		</li>
+		<li><%= link_to "Sign Out", logout_path %></li>
+		<li><%= link_to "Edit Account", edit_user_path(current_user) %></li>
+		<li><%= link_to 'Your Payments', payment_notifications_path %></li>
 	</ul>
 </div>
 

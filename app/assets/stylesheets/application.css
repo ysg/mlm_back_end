@@ -27,6 +27,7 @@ a.plain_button:hover{
     text-decoration: none;
 }
 
+.center{text-align:center;}
 .notifyMessage { padding: 7px 10px; font-weight: bold; margin: 10px 0; display: none; }
 .notifySuccess { border: 1px solid #C1D779; background: #EFFEB9; display: block; }
 .notifyError { border: 1px solid #E18B7C; background: #FAD5CF; display: block; }
@@ -56,4 +57,6 @@ a.plain_button:hover{
 .sign-in{width:30%; margin:0 auto;}
 .sign-up{width:30%; margin:0 auto;}
 .field{width:50%; float:left; text-align:center; margin-bottom:20px;}
+.accounts{width:30.33%; float:left; padding: 0 1.5% 0 1.5%;}
+.accounts-container{width:80%; margin: 0 auto;}
 .actions{text-align:center;}

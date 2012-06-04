@@ -2,9 +2,9 @@
     <div class="nav-collapse">
       <ul class="nav pull-right">
       	<li class="divider-vertical"></li>
-        <li><a href="#about">About</a></li>
+        <li><%= link_to 'About', static_about_path %></li>
         <li class="divider-vertical"></li>
-        <li><a href="#help">Help</a></li>
+        <li><%= link_to 'Help', static_help_path %></li>
         <li class="divider-vertical"></li>
 		<li><%= link_to 'Sign In', root_path %></li>
 		<li class="divider-vertical"></li>
@@ -12,24 +12,25 @@
     </div>
 <% end %>
 <center><h3>Create Account</h3></center>
+<hr class="soften"></hr>
 <%= render :partial => 'form' %><br />
 <hr class="soften"></hr>
 <center><h2>Choose between the following 3 account types</h2></center><br />
 
-<div style="width:100%; margin: 0 auto;">
+<div class="accounts-container">
 	<section>
-<div style="width:33.33%; float:left;">
-<h2><span class="label label_package_1">Platinum</span></h2>
+<div class="accounts">
+<h2><center><span class="label label_package_1">Platinum</span><center></h2>
 <p>as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncov</p>
 
 </div>
-<div style="width:33.33%; float:left;">
-<h2><span class="label label_package_2">Gold</span></h2>
+<div class="accounts">
+<h2><center><span class="label label_package_2">Gold</span></center></h2>
 <p>as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncov</p>
 
 </div>
-<div style="width:33.33%; float:left;">
-<h2><span class="label label_package_3">Free</span></h2>
+<div class="accounts">
+<h2><center><span class="label label_package_3">Free</span></center></h2>
 <p>as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncov</p>
 
 
