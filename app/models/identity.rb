@@ -23,7 +23,7 @@ class Identity < OmniAuth::Identity::Models::ActiveRecord
   validates :state, presence: true
   validates :zip, presence: true
   validates :home_phone, numericality: true, presence: true
-  validates :cell, numericality: true, presence: true
+  validates :cell, numericality: true, allow_blank: true
   validates :package, presence: true
   #validates :referred_by, presence: true
   validates :referer_id, presence: true

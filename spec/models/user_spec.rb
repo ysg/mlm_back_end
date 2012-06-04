@@ -30,8 +30,21 @@ require 'spec_helper'
 
 describe User, "Ancestry features" do
   before(:each) do
-		@root = User.create
-		@child = @root.children.create
+    User.destroy_all
+    Identity.destroy_all
+    @identity = FactoryGirl.create(:identity)
+    @root = FactoryGirl.create(:user, :name => @identity.name, :email => @identity.email, :uid =>@identity.id.to_s)
+    @child = @root.children.create! do |user|
+        user.name ="child"
+        user.email = "child1@child.com"
+        user.package = "3"
+        user.referer_id = "1"
+        user.street_address = "street"
+        user.city = "city"
+        user.state = "state"
+        user.zip = "zip"
+        user.home_phone = "1111111"
+    end
     @valid_attributes = {
     }
   end
@@ -45,19 +58,61 @@ describe User, "Ancestry features" do
 	end
 
 	it 'should allow to create new children' do
-		u = @root.children.create
+		u = @root.children.create! do |user|
+        user.name ="child"
+        user.email = "child2@child.com"
+        user.package = "3"
+        user.referer_id = "1"
+        user.street_address = "street"
+        user.city = "city"
+        user.state = "state"
+        user.zip = "zip"
+        user.home_phone = "1111111"
+      end
 		@root.children.should include (u)
 		u.parent.should == (@root)
 	end
 
 	it 'should allow to search for grandsons' do
-		u = @child.children.create
+		u = @child.children.create! do |user|
+        user.name ="child"
+        user.email = "child11@child.com"
+        user.package = "3"
+        user.referer_id = "1"
+        user.street_address = "street"
+        user.city = "city"
+        user.state = "state"
+        user.zip = "zip"
+        user.home_phone = "1111111"
+      end
 		@root.descendants(:at_depth => 2).should == ([u])
 	end
 end
 #specs for public methods
 	
 describe User, "Validations" do
+  before do
+    User.destroy_all
+    Identity.destroy_all
+    @identity = FactoryGirl.create(:identity)
+    @user = FactoryGirl.create(:user, :name => @identity.name, :email => @identity.email, :uid =>@identity.id.to_s)
+  end
+
+  subject { @user }
+
+  it { should validate_presence_of(:name) }
+  it { should validate_presence_of(:email) }
+  it { should validate_uniqueness_of(:email) }
+  it { should validate_presence_of(:street_address) }
+  it { should validate_presence_of(:city) }
+  it { should validate_presence_of(:state) }
+  it { should validate_presence_of(:zip) }
+  it { should validate_presence_of(:home_phone) }
+  it { should validate_numericality_of(:home_phone) }
+  it { should validate_numericality_of(:cell) }
+  it { should validate_presence_of(:package) }
+  it { should validate_presence_of(:referer_id) }
+  #it { should validate_presence_of(:referred_by) }
 end
 
 
