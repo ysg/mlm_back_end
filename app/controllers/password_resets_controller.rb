@@ -5,14 +5,14 @@ class PasswordResetsController < ApplicationController
   def create
     identity = Identity.find_by_email(params[:email])
     identity.send_password_reset if identity
-    redirect_to root_url, :notice => "Email sent with password reset instructions."
+    redirect_to login_path, :notice => "Email sent with password reset instructions."
   end
 
   def edit
     begin
       @identity = Identity.find_by_password_reset_token!(params[:id])
     rescue
-      redirect_to root_url, :alert => "Sorry, the url could not be validated"
+      redirect_to login_path, :alert => "Sorry, the url could not be validated"
     end
   end
 
@@ -26,7 +26,7 @@ class PasswordResetsController < ApplicationController
     if @identity.password_reset_sent_at < 2.hours.ago
       redirect_to new_password_reset_path, :alert => "Password reset has expired."
     elsif @identity.save
-      redirect_to root_url, :notice => "Password has been reset!"
+      redirect_to login_path, :notice => "Password has been reset!"
     else
       render :edit
     end

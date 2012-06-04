@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  http_basic_authenticate_with :name => "andy", :password => "thering", :only => [:index, :show]
+  http_basic_authenticate_with :name => "admin", :password => "bpbadmin", :only => [:index, :show]
   # GET /users
   # GET /users.json
   def index
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   end
 
   def upgrade_to_platinum
-    redirect_to root_url and return if current_user.package==1
+    redirect_to login_path and return if current_user.package==1
 
     current_package_cost = User::PACKAGE_COSTS[current_user.package.to_s]
     platinum_package_cost = User::PACKAGE_COSTS["1"]
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   end
 
   def upgrade_to_gold
-    redirect_to root_url and return if ( (current_user.package==1) || (current_user.package==2) )
+    redirect_to login_path and return if ( (current_user.package==1) || (current_user.package==2) )
 
     current_package_cost = User::PACKAGE_COSTS[current_user.package.to_s]
     gold_package_cost = User::PACKAGE_COSTS["2"]
