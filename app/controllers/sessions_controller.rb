@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
    session[:user_id] = user.id
    #Redirect to paypal if from signup
    if (/identit/.match(request.referer).present? && user.package!=3)
-     redirect_to user.paypal_url(my_account_url, payment_notifications_url) and return
+     redirect_to user.paypal_url(my_account_url, payment_notifications_url, User::PACKAGE_COSTS[params["package"]]) and return
    end
    session["return_to"] = params[:return_to] if params[:return_to].present?
    if session["return_to"].present?

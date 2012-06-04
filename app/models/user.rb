@@ -59,7 +59,8 @@ validates :referer_id, presence: true
      user.uid = auth["uid"]
      user.name = auth["info"]["name"]
      user.email = auth["info"]["email"]
-     user.package = params["package"] if params["package"].present?
+     #default package is set to be 3. It gets updated on successful payment completion.
+     user.package = (Rails.env == "development" ? params["package"] : "3")
      user.referer_id = User.generate_referer_id
      user.purchased_at = nil
    end
@@ -135,12 +136,16 @@ validates :referer_id, presence: true
     Time.now.to_i.to_s[-6,6]
   end
 
-  def paypal_url(return_url, notify_url, amount=nil, upgrade_package=false)
-    # Set default package cost to the current package set through sign-up
-    amount = PACKAGE_COSTS[self.package.to_s] if amount.nil?
-    package_name = PACKAGE_IDS.index(self.package).to_s+" Package"
-    # the custom field is used to determine the user to assign the payment in PaymentNotifications#create
-    custom_field = self.id
+  def paypal_url(return_url, notify_url, amount, upgrade_package=false)
+    # custom_field : to determine the user to assign the payment, and update purchased package in PaymentNotifications#create
+
+    #case of signup
+    if upgrade_package == false
+      signup_package = PACKAGE_IDS.key(PACKAGE_COSTS.key(amount).to_i).to_s
+
+      package_name = signup_package+" Package"
+      custom_field = "#{self.id}-#{signup_package}_package_signup"
+    end
 
     if upgrade_package == "platinum"
       package_name = "platinum Package Upgrade"
