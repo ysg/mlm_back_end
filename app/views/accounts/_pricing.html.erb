@@ -1,33 +1,69 @@
 <div class="hero-unit">
-	<h1>To be Completed!</h1>
-	<p>With the platinum package you can invite other people to join Black Pride Beauty and get a percentage of their earnings... </p>
-	<p>Please click the following button to upgrade to Platinum Account</p>
+	<h2><%= @account.name %>, Welcome!</h2>
+	<p class="">Your package does not allow for the construction of generations or referral earnings. Below, you will find the features of each package.</p>
+	<p>In a short while, we will be unveiling our new website that will allow you to take full advantage of your Free or Gold account. In the meantime, you are more than welcome to upgrade and start bringing in referral commissions.</p>
 	<br />
-	<p>
+	<p><center>
 		<%= link_to 'Upgrade to Platinum', upgrade_to_platinum_users_path, {:class => "plain_button label_package_1"} %>
 		<% if account.has_free_package %>
 			<%= link_to 'Upgrade to Gold', upgrade_to_gold_users_path, {:class => "plain_button label_package_2"} %>
 		<% end %>
-	</p>
+	</center></p>
 </div>
-	<div class="row-fluid">
-		<div class="span4">
-			<h3>Platinum</h3>
-			<h6>$299/month</h6>
-			<p>Explain Platinum Package</p>
-		</div>
+<div class="accounts-container-inside">
+	<section>
+<div class="accounts">
+<h2><center><span class="label label_package_1">Platinum</span><center></h2>
+<h4>Member Benefits:</h4>
+<ul>
+  <li style="font-weight:bold;">Receive $50 for each platinum representative referred</li>
+  <li>Licenced to buy all products at wholesale</li>
+  <li>Free Website</li>
+  <li>Free shipping on orders with two or more packs of hair</li>
+  <li>One time sign up fee</li>
+  <li>No monthly fee</li>
+  </ul>
 
-		<div class="span4">
-			<h3>Gold</h3>
-			<h6>$199/month</h6>
-			<p>Explain Gold Package</p>
+  <dl>
+<dt>Sign a Free Account</dt>
+<dd>-> Receive the difference between wholesale and retail price, minus 10% (wholesale-retail-10%= payout)</dd>
+<dd>-> Licensed to sign up unlimited numbers of Preferred Customers (free)</dd><br />
+<dt>Sign a Platinum/Gold Account</dt>
+<dd>-> $4.00 for every pack of hair bought or sold by the 1st generation (ex. 100 packs of hair sold X $4.00 = $400.00)</dd>
+<dd>-> $1.00 for every pack of hair sold if they are in the reps. 2nd generation (100 pack X $1.00 = 100.00)</dd>
+  </dl>
 
-		</div>
 
-		<div class="span4">
-			<h3>Free</h3>
-			<p>Explain Free Package</p>
+    <p style="font-weight:bold;">Only Platinum Representive ($299.00) are licensed to sign up Platinum and Gold Representive and Preferred Customers. </p>
+    <p><h2><center>$299.99</center></h2></p>
 
-		</div>
-	</div>
+</div>
+<div class="accounts">
+<h2><center><span class="label label_package_2">Gold</span></center></h2>
+<h4>Member Benefits:</h4>
+<ul>
+  <li>Licenced to buy all products at wholesale</li>
+  <li>Free Website</li>
+  <li>Free shipping on orders with two or more packs of hair</li>
+  <li>Licensed to sell all BPBC products</li>
+  <li>One time sign up fee</li>
+  <li>No monthly fee</li>
+  </ul>
+  <p><h2><center>$99.99</center></h2></p>
+
+</div>
+<div class="accounts">
+<h2><center><span class="label label_package_3">Free</span></center></h2>
+<h4>Member Benefits:</h4>
+<ul>
+  <li>Allowed to purchase BPBC products at our reduce retail price (an additonal %10 discount)</li>
+  <li>Free Website</li>
+  <li>Free shipping on orders with two or more packs of hair</li>
+  <li>No sign up cost</li>
+  </ul>
+  <p><h2><center>Free</center></h2></p>
+
+
+</div>
+</section>
 </div>

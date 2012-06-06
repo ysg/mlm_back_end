@@ -59,4 +59,5 @@ a.plain_button:hover{
 .field{width:50%; float:left; text-align:center; margin-bottom:20px;}
 .accounts{width:30.33%; float:left; padding: 0 1.5% 0 1.5%;}
 .accounts-container{width:80%; margin: 0 auto;}
+.accounts-container-inside{width:100%; margin: 0 auto;}
 .actions{text-align:center;}

@@ -84,4 +84,7 @@ MlmBackEnd::Application.routes.draw do
 	match "/my_account", to: 'accounts#show', :as => 'my_account'
 	match "/user_modal/:user_id", to: 'accounts#user_modal', :as => 'user_modal'
 
+  match 'contact' => 'contact#new', :as => 'contact', :via => :get
+  match 'contact' => 'contact#create', :as => 'contact', :via => :post
+
 end

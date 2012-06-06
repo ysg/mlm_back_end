@@ -1,0 +1,56 @@
+<% content_for :nav_links do %>
+    <div class="nav-collapse">
+      <ul class="nav pull-right">
+        <% if current_user %>
+        <li class="divider-vertical"></li>  
+          <li><%= link_to "Welcome #{current_user.name}", my_account_path %></li> 
+          <% else %>
+          <li class="divider-vertical"></li>  
+          <li><%= link_to 'Sign In', login_path %></li>
+          <li class="divider-vertical"></li>  
+        <li><%= link_to 'Sign Up', new_identity_path %></li>
+        <% end %>
+    <li class="divider-vertical"></li>    
+          <li><%= link_to 'About', static_about_path %></li>
+        <li class="divider-vertical"></li>
+        <li><%= link_to 'Help', contact_path %></li>
+        <li class="divider-vertical"></li>      
+      </ul>
+    </div>
+<% end %>
+<div class="row-fluid">
+  <center><h1>Contact Black Pride Beauty</h1></center>
+  <hr class="soften"></hr>
+  <div class="span3">&nbsp;</div><div class="span6">
+<%= form_for @message, :url => contact_path do |form| %>
+  <fieldset class="fields">
+    <div class="span3">
+    <div class="span3">
+      <%= form.text_field :name, placeholder: "Your Name" %>
+    </div><br />
+    
+    <div class="span3">
+      <%= form.text_field :email, placeholder: "Your Email" %>
+    </div><br />
+
+    <div class="span3">
+      <%= form.text_field :subject, placeholder: "Message Subject" %>
+    </div><br />
+    <div class="span2" style="margin-top:30px;">
+  <fieldset class="actions">
+    <%= form.submit "Send", class: "btn btn-large btn-info" %>
+  </fieldset>
+</div>
+    </div>
+    <div style="float:right;">
+    <div class="span4">
+      <%= form.text_area :body, placeholder: "Message" %>
+    </div>
+  </div>
+
+  </fieldset>
+  
+  
+<% end %>
+</div>
+</div>

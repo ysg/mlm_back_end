@@ -17,6 +17,20 @@ end
 
 module MlmBackEnd
   class Application < Rails::Application
+
+config.action_mailer.smtp_settings = {
+  :address              => "smtp.gmail.com",
+  :port                 => 587,
+  :domain               => "gmail.com",
+  :user_name            => "blackpridebeauty@blackpridebeauty.com",
+  :password             => "blackpridebeauty",
+  :authentication       => :plain,
+  :enable_starttls_auto => true
+}
+
+config.action_mailer.default_url_options = {
+  :host => "blackpridebeauty.com"
+}
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

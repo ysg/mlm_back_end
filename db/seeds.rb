@@ -199,6 +199,20 @@ oh2.referer_id = "134460"
 set_user_attributes_from_name(oh2)
 oh2.save
 
+id_oh3 = Identity.create(
+    {:name => 'Jon Random3', :email => 'oh3@bpb.com', :password => 'pppppppp', :password_confirmation => 'pppppppp'}
+    .merge(set_user_attributes_in_identity("oh3"))
+)
+
+oh3 = ah4.children.create
+oh3.uid = id_oh3.id
+oh3.provider = "identity"
+oh3.name = "Jon Random3"
+oh3.email = "oh3@bpb.com"
+oh3.package = "3"
+oh3.referer_id = "134630"
+set_user_attributes_from_name(oh3)
+oh3.save
 #id_ysgc1 = Identity.create(
 #    {:name => 'ysgc1', :email => 'ysgc1@bpb.com', :password => 'holanda', :password_confirmation => 'holanda'}
 #    .merge(set_user_attributes_in_identity("ysgc1"))

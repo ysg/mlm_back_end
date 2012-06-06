@@ -2,7 +2,7 @@
 
       <div style="width: 936px; margin: 0 auto; background-color: #fff;">
       	<div style="height:282px;">
-      		<div style="float:left; width:40%;"><img src="assets/header3.gif"></div>
+      		<div style="float:left; width:40%;"><img src="assets/logo.jpg"></div>
       		<div style="float:right; width:60%;text-align:center;">
       			<div style="margin-left:80px; margin-bottom:40px; padding-top:20px;">
       <ul class="nav nav-pills">
@@ -11,10 +11,11 @@
   </li>
   <li><%= link_to 'Back Office', login_path %></li>
   <li><%= link_to 'Sign Up', new_identity_path %></li>
-  <li><%= link_to 'Help', static_help_path %></li>
+  <li><%= link_to 'Help', contact_path %></li>
   <li><%= link_to 'About', static_about_path %></li>
 </ul></div>
       			<p style="font-weight:bold;"><font face="Impact" size="6">Back Pride<br />Beauty Corp.</font><p>
+              <%= link_to "Learn More", static_about_path, class: "btn btn-large btn-info" %>
 
       			</div>
       	</div>

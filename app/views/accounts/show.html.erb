@@ -5,7 +5,7 @@
 	<li class="divider-vertical"></li>
 	  <li><%= link_to 'About', static_about_path %></li>
         <li class="divider-vertical"></li>
-        <li><%= link_to 'Help', static_help_path %></li>
+        <li><%= link_to 'Help', contact_path %></li>
 	<li class="divider-vertical"></li>
 </ul>
 <div class="btn-group pull-right">
@@ -47,7 +47,7 @@
 					<%= render :partial => 'network' %>
 				<% else %>
 					<%= render :partial => 'pricing', :locals => {:account => @account} %>
-				<% end -%>
+				<% end %>
 			</div>
 			<div id="commission" class="tab-pane fade">
 						<%= render :partial => 'commission' %>
