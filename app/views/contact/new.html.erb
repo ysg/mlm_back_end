@@ -36,19 +36,20 @@
     <div class="span3">
       <%= form.text_field :subject, placeholder: "Message Subject" %>
     </div><br />
-    <div class="span2" style="margin-top:30px;">
-  <fieldset class="actions">
-    <%= form.submit "Send", class: "btn btn-large btn-info" %>
-  </fieldset>
-</div>
+    
     </div>
     <div style="float:right;">
-    <div class="span4">
+    <div class="span3">
       <%= form.text_area :body, placeholder: "Message" %>
     </div>
   </div>
 
   </fieldset>
+  <div class="span2" style="margin-top:30px;">
+  <fieldset class="actions">
+    <%= form.submit "Send", class: "btn btn-large btn-info" %>
+  </fieldset>
+</div>
   
   
 <% end %>
