@@ -10,51 +10,67 @@
  </div>
 <% end %>
 <div class="field">
+<%= label_tag :name %><br />
  <%= text_field_tag :name, @identity.try(:name), placeholder: 'Name *' %>
 </div>
 <div class="field">
+	<%= label_tag :email %><br />
  <%= text_field_tag :email, @identity.try(:email), placeholder: "Email *" %>
 </div>
 <div class="field">
+	<%= label_tag :password %><br />
  <%= password_field_tag :password, "", placeholder: "Password *" %>
 </div>
 <div class="field">
+	<%= label_tag :password_confirmation %><br />
  <%= password_field_tag :password_confirmation, "", placeholder: "Confirm Password *" %>
 </div>
 <div class="field">
+	<%= label_tag :comapny %><br />
  <%= text_field_tag :company, @user.try(:company), placeholder: "Company" %>
 </div>
 <div class="field">
+	<%= label_tag :spouse_name %><br />
 	<%= text_field_tag :spouse_name, @user.try(:spouse_name), placeholder: "Spouse Name" %>
 </div>
 <div class="field">
+	<%= label_tag :street_address %><br />
  <%= text_field_tag :street_address, @user.try(:street_address), placeholder: "Street Address *" %>
 </div>
 <div class="field">
+	<%= label_tag :city %><br />
 	<%= text_field_tag :city, @user.try(:city), placeholder: "City *" %>
 </div>
 <div class="field">
+	<%= label_tag :state %><br />
 	<%= text_field_tag :state, @user.try(:state), placeholder: "State/Province *" %>
 </div>
 <div class="field">
+	<%= label_tag :zip %><br />
 	<%= text_field_tag :zip, @user.try(:zip), placeholder: "Zip/Postal *" %>
 </div>
 <div class="field">
+	<%= label_tag :ein %><br />
 	<%= text_field_tag :ein, @user.try(:ein), placeholder: "SS# or EIN" %>
 </div>
 <div class="field">
+	<%= label_tag :home_phone %><br />
 	<%= text_field_tag :home_phone, @identity.try(:home_phone), placeholder: "Home Phone *" %>
 </div>
 <div class="field">
+	<%= label_tag :cell %><br />
 	<%= text_field_tag :cell, @identity.try(:cell), placeholder: "Cell" %>
 </div>
 <div class="field">
+		<%= label_tag :package %><br />
 	<%= select_tag :package, options_for_select(User::PACKAGE_IDS.inject({}){|memo,(k,v)| memo[k.to_s] = v; memo},@identity.try(:package)) %>
 </div>
 <div class="field">
+		<%= label_tag :referer_id %><br />
 	<%= text_field_tag :referer_id, "", placeholder: "Referer ID *" %>
 </div>
 <div class="field">
+		<%= label_tag :referred_by %><br />
 	<%= text_field_tag :referred_by, @identity.try(:referred_by), :disabled => true, placeholder: "Referer Name" %>
 	<%= image_tag("loading.gif", :style=>"display:none", :id => "loading_referer_name") %>
 </div>

@@ -158,7 +158,7 @@ validates :referer_id, presence: true
     end
 
     values = {
-      :business => 'sales@basmediagroup.ca',
+      :business => 'seller_1338452369_biz@gmail.com',
       :cmd => '_xclick',
       :return => return_url,
       :amount => amount,
@@ -166,7 +166,7 @@ validates :referer_id, presence: true
       :custom => custom_field,
       :notify_url => notify_url
     }
-    "https://www.paypal.com/cgi-bin/webscr?" + values.to_query
+    "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
   end
 
   def update_identity
