@@ -16,14 +16,16 @@ class Identity < OmniAuth::Identity::Models::ActiveRecord
   attr_accessible :email, :name, :password_digest, :password, :password_confirmation, *USER_ATTRIBUTES
   attr_accessor *USER_ATTRIBUTES
 
+  VALID_TELE_REGEX = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
+
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true, format: /^[^@\s]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
   validates :street_address, presence: true
   validates :city, presence: true
   validates :state, presence: true
   validates :zip, presence: true
-  validates :home_phone, numericality: true, presence: true
-  validates :cell, numericality: true, allow_blank: true
+  validates :home_phone, presence: true, format: { with: VALID_TELE_REGEX }
+  validates :cell, allow_blank: true, format: { with: VALID_TELE_REGEX }
   validates :package, presence: true
   #validates :referred_by, presence: true
   validates :referer_id, presence: true

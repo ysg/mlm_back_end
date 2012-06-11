@@ -26,20 +26,24 @@
   <fieldset class="fields">
     <div class="span3">
     <div class="span3">
+      <%= label_tag :name %>
       <%= form.text_field :name, placeholder: "Your Name" %>
     </div><br />
     
     <div class="span3">
+      <%= label_tag :email %>
       <%= form.text_field :email, placeholder: "Your Email" %>
     </div><br />
 
     <div class="span3">
+      <%= label_tag :subject %>
       <%= form.text_field :subject, placeholder: "Message Subject" %>
     </div><br />
     
     </div>
     <div style="float:right;">
     <div class="span3">
+      <%= label_tag :message %>
       <%= form.text_area :body, placeholder: "Message" %>
     </div>
   </div>
