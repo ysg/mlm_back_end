@@ -37,16 +37,14 @@ has_ancestry :cache_depth => true
 attr_accessible :cell, :city, :company, :ein, :home_phone, :spouse_name, :state, :street_address, :zip
 attr_protected :name, :email, :package, :referer_id
 
-VALID_TELE_REGEX = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
-
 validates :name, presence:true
 validates :email, presence:true, uniqueness:true
 validates :street_address, presence: true
 validates :city, presence: true
 validates :state, presence: true
 validates :zip, presence: true
-validates :home_phone, presence: true, format: { with: VALID_TELE_REGEX }
-validates :cell, format: { with: VALID_TELE_REGEX }
+validates :home_phone, presence: true
+#validates :cell, allow_blank: true
 validates :package, presence: true
 validates :referer_id, presence: true
 
