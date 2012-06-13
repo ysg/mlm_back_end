@@ -94,7 +94,7 @@ set_user_attributes_from_name(deb)
 deb.save
 
 id_alex = Identity.create(
-    {:name => 'Steve Livneh', :email => 'alexdongqian@yahoo.com', :password => 'pppppppp', :password_confirmation => 'pppppppp'}
+    {:name => 'Alex Dong', :email => 'alexdongqian@yahoo.com', :password => 'pppppppp', :password_confirmation => 'pppppppp'}
     .merge(set_user_attributes_in_identity("alex"))
 )
 

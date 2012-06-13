@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  http_basic_authenticate_with :name => "admin", :password => "bpbadmin", :only => [:index, :show]
+  http_basic_authenticate_with :name => "AlexDebSteve2012", :password => "bpbAdmin2012", :only => [:index, :show]
   # GET /users
   # GET /users.json
   def index
