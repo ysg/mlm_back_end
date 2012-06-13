@@ -14,7 +14,7 @@ def set_user_attributes_in_identity(user_name)
   user_attributes[:city] = user_name+" city"
   user_attributes[:state] = user_name+" state"
   user_attributes[:zip] = user_name+" zip"
-  user_attributes[:home_phone] = "1111111"
+  user_attributes[:home_phone] = "1111111111"
   user_attributes[:cell] = "1111111111"
   user_attributes[:package] = "1"
   user_attributes[:referer_id] = "123456"
@@ -41,8 +41,8 @@ root.street_address="root street"
 root.city="root city"
 root.state="root state"
 root.zip="root zip"
-root.home_phone="1111111"
+root.home_phone="1111111111"
 root.package="1"
-root.cell='123123123'
+root.cell='1111111111'
 root.referer_id = 123456
 root.save
