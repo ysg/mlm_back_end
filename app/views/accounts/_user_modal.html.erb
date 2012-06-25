@@ -1,6 +1,16 @@
 <div class="modal fade" id="network-modal">
 	<div class="modal-header">
 		<button class="close" data-dismiss="modal">×</button>
+		<h3>Referred by</h3>
+	</div>
+	<div class="modal-body">
+			<b><%= @user.parent.name %></b>	- (ID: <%= @user.parent.referer_id %>)
+	</div>
+</div>
+
+<!--<div class="modal fade" id="network-modal">
+	<div class="modal-header">
+		<button class="close" data-dismiss="modal">×</button>
 		<h3><%= @user.name %></h3>
 	</div>
 	<div class="modal-body">
@@ -11,4 +21,4 @@
 			<dd><%= @user.parent.name %>	(ID: <%= @user.parent.referer_id %>) </dd>
 		</dl>
 	</div>
-</div>
+</div>-->

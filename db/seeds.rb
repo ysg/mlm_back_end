@@ -116,3 +116,20 @@ alex.referer_id = "423456"
 set_user_attributes_from_name(alex)
 alex.save
 
+id_foo = Identity.create(
+    {:name => 'Foo Bar', :email => 'foo@foo.com', :password => 'pppppppp', :password_confirmation => 'pppppppp'}
+    .merge(set_user_attributes_in_identity("foo"))
+)
+
+foo = andy.children.create
+foo.uid = id_foo.id
+foo.provider = "identity"
+foo.name = "Foo Bar"
+foo.email = "foo@foo.com"
+foo.package = "1"
+foo.home_phone = "1111111111"
+foo.cell = "1111111111"
+foo.referer_id = "423459"
+set_user_attributes_from_name(foo)
+foo.save
+

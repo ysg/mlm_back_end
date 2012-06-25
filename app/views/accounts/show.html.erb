@@ -63,6 +63,14 @@
 		<h3><%= @account.name %></h3>
 	</div>
 	<div class="modal-body">
+			<b>Referred by:</b> - 
+			<%= @account.parent.name %>	(ID: <%= @account.parent.referer_id %>)
+
+	</div>
+</div>
+
+<!--
+	<div class="modal-body">
 		<dl class="dl-horizontal">
 			<dt>ID:</dt>
 			<dd><%= @account.referer_id %>  </dd>
@@ -71,6 +79,5 @@
 		</dl>
 
 	</div>
-</div>
-
+-->
 
