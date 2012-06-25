@@ -1,7 +1,7 @@
 				<div class="container-fluid">
 					<div class="row-fluid">
 						<div class="span6">
-							<h3>Generation 1</h3>
+							<h3>Generation 1 <small>Click on their ID to see who they were referred by.</small></h3>
 							<table class="table network">
 								<tr>
 									<th>ID</th>
@@ -29,6 +29,7 @@
 							<table class="table network">
 								<tr>
 									<th>ID</th>
+									<th>Name</th>
 									<th>Earnings</th>
 								</tr>
 								<% @account.second_generation.each do |item| -%>
@@ -37,6 +38,9 @@
 											<span class="label label_package_<%= item.package %>">
 												<%= link_to item.referer_id, user_modal_path(:user_id => item.referer_id), {:remote => true, :class => 'network-modal-link'} %>
 											</span>
+										</td>
+										<td>
+											<%= item.name %>
 										</td>
 										<td>$<%= @account.earnings_from_user item%>.00</td>
 									</tr>	
