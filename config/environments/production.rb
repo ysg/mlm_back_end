@@ -20,10 +20,6 @@ MlmBackEnd::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
-  # Enable the asset pipeline
-  config.assets.enabled = false
-
-
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
 
