@@ -1,17 +1,17 @@
 FactoryGirl.define do
-  factory :identity do
+  factory :identity, class: Identity do
     name 'test'
-    sequence (:email) {|n| "test+#{n}@test.com"}
-    password 'jjjjjj'
+    sequence(:email) { |n| "foo#{n}@example.com" }
+    password 'jjjjjjjj'
     password_confirmation { |u| u.password }
     street_address "street"
     city "city"
     state "state"
     zip "zip"
-    home_phone "123456"
-    cell "0123456789"
+    home_phone "1231231234"
+    cell "1231231234"
     package "3"
-    referer_id "1"
+    referer_id "123456"
   end
 
   factory :user do

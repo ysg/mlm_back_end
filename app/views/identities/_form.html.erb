@@ -1,4 +1,4 @@
-<%= form_tag "/auth/identity/register", class: "form-inline" do %>
+<%= form_tag "/auth/identity/register", class: "well form-inline" do %>
 <% if @identity && @identity.errors.any? %>
  <div class="error_messages">
  <h2><%= pluralize(@identity.errors.count, "error") %> prohibited this account from being saved:</h2>
@@ -75,5 +75,5 @@
 	<%= image_tag("loading.gif", :style=>"display:none", :id => "loading_referer_name") %>
 </div>
 
-<div class="actions"><%= submit_tag "Register", class: "btn btn-large btn-info" %><p>If you chose a paid account, you will be redirected to PayPal</p></div>
+<div style="text-align:center;margin-right:100px; margin-top:40px;"><%= submit_tag "Register", class: "btn btn-large btn-info" %><p><small>If you chose a paid account, you will be redirected to PayPal</small></p></div>
 <% end %>

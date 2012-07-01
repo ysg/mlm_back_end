@@ -36,7 +36,7 @@ describe User, "Ancestry features" do
     @root = FactoryGirl.create(:user, :name => @identity.name, :email => @identity.email, :uid =>@identity.id.to_s)
     @child = @root.children.create! do |user|
         user.name ="child"
-        user.email = "child1@child.com"
+        user.email = "childd1@child.com"
         user.package = "3"
         user.referer_id = "1"
         user.street_address = "street"
